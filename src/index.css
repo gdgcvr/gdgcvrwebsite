@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 220 20% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 8%;
+
+    --primary: 217 89% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 15% 95%;
+    --secondary-foreground: 220 20% 8%;
+
+    --muted: 40 10% 93%;
+    --muted-foreground: 220 10% 42%;
+
+    --accent: 145 83% 34%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 4 69% 54%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 91%;
+    --input: 220 10% 90%;
+    --ring: 217 89% 61%;
+
+    --radius: 0.75rem;
+
+    /* Google brand colors */
+    --google-blue: 217 89% 61%;
+    --google-red: 4 69% 54%;
+    --google-yellow: 45 100% 48%;
+    --google-green: 145 83% 34%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .heading-xl {
+    @apply text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.02] tracking-[-0.03em];
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.06] tracking-[-0.025em];
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl font-semibold leading-tight tracking-[-0.02em];
+  }
+
+  .body-lg {
+    @apply text-lg md:text-xl leading-[1.7];
+  }
+
+  .section-padding {
+    @apply py-32 md:py-40 lg:py-52;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-6 md:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6 md:px-8;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+/* Doodle animations */
+@keyframes doodle-drift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(4px, -6px) rotate(2deg);
+  }
+}
+
+@keyframes doodle-draw {
+  from {
+    stroke-dashoffset: 200;
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes doodle-fade-drift {
+
+  0%,
+  100% {
+    opacity: 0.08;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.15;
+    transform: translateY(-4px);
+  }
+}
+
+.doodle-animate {
+  animation: doodle-drift 8s ease-in-out infinite;
+}
+
+.doodle-draw {
+  animation: doodle-draw 1.5s ease-out forwards;
+}
+
+.doodle-fade {
+  animation: doodle-fade-drift 6s ease-in-out infinite;
+}
+
+/* Preloader Animations */
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 100;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gentle-breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes fade-out-loader {
+
+  0%,
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(0, -15px);
+    opacity: 0.15;
+  }
+
+  75% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translate(0, -30px);
+    opacity: 0;
+  }
+}
+
+.animate-draw-black {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-line 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.animate-draw-color {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-line 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  opacity: 0.9;
+}
+
+.delay-color-1 {
+  animation-delay: 0.8s;
+}
+
+/* Red */
+.delay-color-2 {
+  animation-delay: 1.0s;
+}
+
+/* Blue */
+.delay-color-3 {
+  animation-delay: 1.2s;
+}
+
+/* Green */
+.delay-color-4 {
+  animation-delay: 1.4s;
+}
+
+/* Yellow */
+
+.animate-breathe {
+  animation: gentle-breathe 4s ease-in-out infinite;
+}
+
+.animate-fade-out {
+  animation: fade-out-loader 4.5s ease-out forwards;
+}
+
+.animate-particle {
+  animation: float-particle 6s linear infinite;
+}
