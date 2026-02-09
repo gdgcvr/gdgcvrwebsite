@@ -39,9 +39,16 @@ const BlogPost = () => {
                         {/* Left Column - Visuals */}
                         <div className="lg:col-span-4 lg:sticky lg:top-24 h-fit">
                             <AnimatedSection delay={0.1}>
-                                <div className={`aspect-square rounded-2xl overflow-hidden bg-secondary/30 flex items-center justify-center p-12 border-2 border-${post.color}/20`}>
-                                    {doodleMap[post.color]}
-
+                                <div className={`aspect-square rounded-2xl overflow-hidden bg-secondary/30 flex items-center justify-center ${post.image ? 'p-0' : 'p-12'} border-2 border-${post.color}/20`}>
+                                    {post.image ? (
+                                        <img
+                                            src={post.image}
+                                            alt={post.title}
+                                            className="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105"
+                                        />
+                                    ) : (
+                                        doodleMap[post.color]
+                                    )}
                                 </div>
                                 <div className="mt-6 space-y-4">
                                     <div className="flex items-center gap-2">

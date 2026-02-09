@@ -9,6 +9,7 @@ export interface BlogPost {
     readTime: string;
     topic: string;
     color: "google-blue" | "google-red" | "google-green" | "google-yellow";
+    image?: string;
     content: string; // specialized content with markdown-like structure or HTML
 }
 
@@ -22,6 +23,7 @@ export const blogPosts: BlogPost[] = [
         readTime: "5 min read",
         topic: "ML",
         color: "google-blue",
+        image: "/slr_image.png",
         content: `
       <p class="mb-4">Linear regression is the simplest form of a classification problem. We have many techniques to do this type of regression. Today we are going to learn how to use the PyTorch API to help us do this classification.</p>
       
@@ -43,6 +45,7 @@ export const blogPosts: BlogPost[] = [
         readTime: "8 min read",
         topic: "Deep Learning",
         color: "google-red",
+        image: "/cnn_img.png",
         content: `
       <p class="mb-4">This article is a simple guide that will help you build and understand the concepts behind building a simple CNN. By the end of this article you will be able to build a simple CNN based on the PyTorch API and will classify clothing using the FashionMNIST dateset.</p>
       
@@ -64,6 +67,7 @@ export const blogPosts: BlogPost[] = [
         readTime: "6 min read",
         topic: "Programming",
         color: "google-yellow",
+        image: "/java_img.png",
         content: `
       <p class="mb-4">What is Java? Who developed it? What makes it to be different from other languages? What are the benefits of learning Java?</p>
 
