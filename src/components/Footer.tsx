@@ -100,8 +100,17 @@ const Footer = () => {
                 </div>
 
             </div>
-        </footer>
-    );
-};
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-20 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Google Developer Groups – Campus Chapter
+        </p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

@@ -10,6 +10,7 @@ import Team from "./pages/Team";
 import Events from "./pages/Events";
 import Calendar from "./pages/Calendar";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import Loader from "./components/Loader";
 
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/events" element={<Events />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
