@@ -2,18 +2,12 @@ import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
-import { DoodleDots, DoodleCircle, DoodleSpark } from "@/components/DoodleAccents";
-
-const teamMembers = [
-  { name: "Aisha Patel", role: "Chapter Lead", image: "https://api.dicebear.com/9.x/notionists/svg?seed=aisha" },
-  { name: "Marcus Chen", role: "Tech Lead", image: "https://api.dicebear.com/9.x/notionists/svg?seed=marcus" },
-  { name: "Sofia Rivera", role: "Design Lead", image: "https://api.dicebear.com/9.x/notionists/svg?seed=sofia" },
-  { name: "James Okonkwo", role: "Events Lead", image: "https://api.dicebear.com/9.x/notionists/svg?seed=james" },
-  { name: "Priya Sharma", role: "Community Manager", image: "https://api.dicebear.com/9.x/notionists/svg?seed=priya" },
-  { name: "Leo Kim", role: "Content Lead", image: "https://api.dicebear.com/9.x/notionists/svg?seed=leo" },
-  { name: "Zara Ahmed", role: "Outreach Lead", image: "https://api.dicebear.com/9.x/notionists/svg?seed=zara" },
-  { name: "Daniel Park", role: "Web Developer", image: "https://api.dicebear.com/9.x/notionists/svg?seed=daniel" },
-];
+import {
+  DoodleDots,
+  DoodleCircle,
+  DoodleSpark,
+} from "@/components/DoodleAccents";
+import { teamMembers } from "@/data/team";
 
 const Team = () => (
   <Layout>
@@ -24,14 +18,17 @@ const Team = () => (
 
       <div className="container-wide">
         <AnimatedSection>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-google-red mb-8">Our Team</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-google-red mb-8">
+            Our Team
+          </p>
           <h1 className="heading-lg max-w-2xl">
             The people behind
             <br />
             GDG Campus
           </h1>
           <p className="body-lg text-muted-foreground mt-8 max-w-xl">
-            A passionate group of student developers building community, one event at a time.
+            A passionate group of student developers building community, one
+            event at a time.
           </p>
         </AnimatedSection>
 
@@ -49,7 +46,9 @@ const Team = () => (
                     className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
-                <h3 className="font-semibold text-foreground text-sm">{member.name}</h3>
+                <h3 className="font-semibold text-foreground text-sm">
+                  {member.name}
+                </h3>
                 <motion.p
                   className="text-xs text-muted-foreground mt-1.5"
                   variants={{
