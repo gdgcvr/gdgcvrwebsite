@@ -59,9 +59,6 @@ const Footer = () => (
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Google Developer Groups – Campus Chapter
         </p>
-        <p className="text-xs text-muted-foreground">
-          Built with ❤️ by student developers
-        </p>
       </div>
     </div>
   </footer>

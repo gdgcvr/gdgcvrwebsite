@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Team from "./pages/Team";
 import Events from "./pages/Events";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import Loader from "./components/Loader";
 
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/team" element={<Team />} />
             <Route path="/events" element={<Events />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
