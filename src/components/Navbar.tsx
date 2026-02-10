@@ -32,27 +32,9 @@ const Navbar = () => {
           } border rounded-full px-6 flex items-center justify-between`}
       >
         {/* Logo */}
-        {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
           <div className="h-10 w-10 flex items-center justify-center">
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="-30 -30 160 160"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition-transform duration-300 group-hover:scale-110"
-            >
-              {/* Left Bracket */}
-              <path d="M35 25 L10 50 L35 75" stroke="black" strokeWidth="28" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M35 25 L10 50" stroke="#EA4335" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M10 50 L35 75" stroke="#4285F4" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-
-              {/* Right Bracket */}
-              <path d="M65 25 L90 50 L65 75" stroke="black" strokeWidth="28" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M65 25 L90 50" stroke="#34A853" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M90 50 L65 75" stroke="#FBBC05" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img src="src/assets/logo.png" />
           </div>
           <span className="font-semibold text-foreground tracking-tight text-[1rem]">GDG CVR</span>
         </Link>

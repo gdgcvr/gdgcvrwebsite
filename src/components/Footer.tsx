@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Github, Instagram, Linkedin, Twitter, ArrowRight } from "lucide-react";
 
 const Footer = () => {
@@ -79,57 +78,7 @@ const Footer = () => {
                     {/* Branding & Copyright */}
                     <div className="flex items-center gap-5">
                         <div className="w-10 h-10 bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] p-1.5">
-                            <svg
-                                width="100%"
-                                height="100%"
-                                viewBox="-30 -30 160 160"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M35 25 L10 50 L35 75"
-                                    stroke="black"
-                                    strokeWidth="28"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M35 25 L10 50"
-                                    stroke="#EA4335"
-                                    strokeWidth="18"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M10 50 L35 75"
-                                    stroke="#4285F4"
-                                    strokeWidth="18"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-
-                                <path
-                                    d="M65 25 L90 50 L65 75"
-                                    stroke="black"
-                                    strokeWidth="28"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M65 25 L90 50"
-                                    stroke="#34A853"
-                                    strokeWidth="18"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M90 50 L65 75"
-                                    stroke="#FBBC05"
-                                    strokeWidth="18"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
+                            <img src="src/assets/logo.png" />
                         </div>
                         <div className="flex flex-col">
                             <span className="font-bold text-sm uppercase tracking-widest text-black">
