@@ -71,7 +71,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-20 bg-white">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-20 bg-transparent">
+        {/* Gradient Mesh Background */}
+        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-google-blue/20 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-google-red/20 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+          <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-google-yellow/20 rounded-full blur-[120px] animate-pulse delay-2000"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-google-green/20 rounded-full blur-[120px] animate-pulse delay-3000"></div>
+        </div>
+
         {/* Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
