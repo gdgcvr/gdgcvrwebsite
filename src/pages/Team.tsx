@@ -56,6 +56,14 @@ const Team = () => {
   return (
     <Layout>
       <section className="section-padding relative">
+        {/* Gradient Mesh Background */}
+        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-google-blue/20 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-google-red/20 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+          <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-google-yellow/20 rounded-full blur-[120px] animate-pulse delay-2000"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-google-green/20 rounded-full blur-[120px] animate-pulse delay-3000"></div>
+        </div>
+
         <DoodleDots className="absolute top-24 right-[8%] w-14 h-14 opacity-10 text-google-yellow" />
         <DoodleCircle className="absolute bottom-36 left-[5%] w-24 h-24 opacity-8 text-google-blue" />
         <DoodleSpark className="absolute top-1/2 right-[15%] w-10 h-10 opacity-8 text-google-red" />
@@ -103,7 +111,7 @@ const Team = () => {
 
                             {/* Main Card */}
                             <div className="relative h-full bg-white rounded-2xl rounded-tr-[2rem] overflow-hidden border-2 border-black/5 group-hover:border-black transition-all duration-300">
-                              <div className="aspect-[4/5] relative">
+                              <div className="aspect-[4/4.5] relative">
                                 {/* Tech Corner Accent */}
                                 <div className={`absolute top-0 right-0 w-12 h-12 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
                                   <div className={`absolute top-0 right-0 w-full h-full ${bgColor} opacity-20`}></div>
@@ -119,9 +127,9 @@ const Team = () => {
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300"></div>
 
-                                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                  <h3 className="text-white font-bold text-lg leading-tight mb-2 drop-shadow-md">{member.name}</h3>
-                                  <div className="flex items-center justify-between border-t border-white/20 pt-3">
+                                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                  <h3 className="text-white font-bold text-lg leading-tight mb-1 drop-shadow-md">{member.name}</h3>
+                                  <div className="flex items-center justify-between border-t border-white/20 pt-2">
                                     <p className="text-xs text-white/90 font-medium line-clamp-1">{member.role}</p>
                                     <a
                                       href={member.linkedin}
