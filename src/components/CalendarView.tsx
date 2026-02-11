@@ -64,77 +64,82 @@ type Event = {
     tags?: string[];
 };
 
-const generateSampleEvents = (baseDate: Date): Event[] => {
-    const startOfWeek = getStartOfWeek(baseDate);
+const generateSessionEvents = (): Event[] => {
+    const events: Event[] = [];
+    const startDate = new Date(2026, 1, 12); // Feb 12, 2026
+    const endDate = new Date(2026, 2, 31); // Mar 31, 2026
 
-    const setTime = (dayOffset: number, hour: number, minute: number) => {
-        const d = addDays(startOfWeek, dayOffset);
-        d.setHours(hour, minute, 0, 0);
-        return d;
-    };
+    let currentDate = new Date(startDate);
+    let idCounter = 1;
 
-    return [
-        {
-            id: 1,
-            title: "HackFest 2026",
-            start: setTime(1, 9, 0),
-            end: setTime(1, 18, 0),
-            timeString: "09:00 - 18:00",
-            color: "blue",
-            location: "Innovation Hub",
-            tags: ["AI", "Hackathon"]
-        },
-        {
-            id: 2,
-            title: "Community Connect",
-            start: setTime(2, 10, 0),
-            end: setTime(2, 13, 0),
-            timeString: "10:00 - 13:00",
-            color: "green",
-            location: "Main Hall",
-            tags: ["Networking"]
-        },
-        {
-            id: 3,
-            title: "Flutter Forward",
-            start: setTime(2, 14, 0),
-            end: setTime(2, 16, 30),
-            timeString: "14:00 - 16:30",
-            color: "red",
-            location: "Lab 3",
-            tags: ["Mobile"]
-        },
-        {
-            id: 4,
-            title: "DevFest 2025",
-            start: setTime(3, 11, 0),
-            end: setTime(3, 15, 30),
-            timeString: "11:00 - 15:30",
-            color: "yellow",
-            location: "Auditorium",
-            tags: ["Conference"]
-        },
-        {
-            id: 5,
-            title: "Cloud Study Jam",
-            start: setTime(4, 15, 0),
-            end: setTime(4, 18, 0),
-            timeString: "15:00 - 18:00",
-            color: "blue",
-            location: "Cloud Lab",
-            tags: ["GCP"]
-        },
-        {
-            id: 6,
-            title: "Android Workshop",
-            start: setTime(6, 13, 0),
-            end: setTime(6, 16, 0),
-            timeString: "13:00 - 16:00",
-            color: "green",
-            location: "Room 101",
-            tags: ["Android"]
-        },
-    ];
+    // Special Event: Resume Building
+    const resumeDate = new Date(2026, 1, 13); // Feb 13
+    resumeDate.setHours(13, 0, 0, 0); // 1 PM
+    const resumeEnd = new Date(resumeDate);
+    resumeEnd.setHours(15, 0, 0, 0); // 3 PM
+
+    events.push({
+        id: idCounter++,
+        title: "Resume Building",
+        start: resumeDate,
+        end: resumeEnd,
+        timeString: "01:00 PM - 03:00 PM",
+        color: "pink",
+        tags: ["Career", "Resume"]
+    });
+
+    while (currentDate <= endDate) {
+        const day = currentDate.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+        const isResumeDay = currentDate.getDate() === 13 && currentDate.getMonth() === 1; // Feb 13
+
+        // Helper to add event
+        const addEvent = (title: string, color: Event["color"], tags: string[]) => {
+            const start = new Date(currentDate);
+            start.setHours(16, 0, 0, 0); // 4 PM
+            const end = new Date(currentDate);
+            end.setHours(17, 30, 0, 0); // 5:30 PM
+
+            events.push({
+                id: idCounter++,
+                title,
+                start,
+                end,
+                timeString: "04:00 PM - 05:30 PM",
+                color,
+                tags
+            });
+        };
+
+        // Web: Tue, Thu
+        if (day === 2 || day === 4) {
+            addEvent("Web Dev Session", "blue", ["Web", "Frontend"]);
+        }
+
+        // AIML-DS: Wed, Thu
+        if (day === 3 || day === 4) {
+            addEvent("AIML-DS Session", "red", ["AI", "ML", "Data Science"]);
+        }
+
+        // Android: Wed
+        if (day === 3) {
+            addEvent("Android Session", "green", ["Android", "Kotlin"]);
+        }
+
+        // CP: Mon, Fri
+        if (day === 1 || day === 5) {
+            addEvent("CP Session", "yellow", ["CP", "Algorithms"]);
+        }
+
+        // IoT: Fri
+        if (day === 5) {
+            addEvent("IoT Session", "purple", ["IoT", "Hardware"]);
+        }
+
+        // Next day
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return events;
 };
 
 const colorStyles = {
@@ -147,12 +152,13 @@ const colorStyles = {
 };
 
 const CalendarView = ({ isPreview = false }: { isPreview?: boolean }) => {
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const [currentDate, setCurrentDate] = useState(new Date(2026, 1, 12));
     const [view, setView] = useState<ViewType>("Week");
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-    const initialDate = useMemo(() => new Date(), []);
-    const events = useMemo(() => generateSampleEvents(initialDate), [initialDate]);
+    const initialDate = useMemo(() => new Date(2026, 1, 12), []);
+    const events = useMemo(() => generateSessionEvents(), []);
 
     // View Logic
     const daysToShow = useMemo(() => {
@@ -252,8 +258,8 @@ const CalendarView = ({ isPreview = false }: { isPreview?: boolean }) => {
                                 key={tab}
                                 onClick={() => setView(tab)}
                                 className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${view === tab
-                                        ? "bg-white text-foreground shadow-sm"
-                                        : "text-muted-foreground hover:text-foreground"
+                                    ? "bg-white text-foreground shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 {tab}
@@ -278,7 +284,10 @@ const CalendarView = ({ isPreview = false }: { isPreview?: boolean }) => {
             {/* Main Content Area */}
             <div
                 className="flex-1 overflow-y-auto relative custom-scrollbar select-none"
-                onClick={() => setSelectedEvent(null)}
+                onClick={() => {
+                    setSelectedEvent(null);
+                    setSelectedDate(null);
+                }}
             >
                 {/* Month View */}
                 {view === "Month" && (
@@ -292,13 +301,19 @@ const CalendarView = ({ isPreview = false }: { isPreview?: boolean }) => {
                             {monthDays.map((d, i) => {
                                 const dayEvents = events.filter(e => isSameDate(e.start, d.date));
                                 return (
-                                    <div key={i} className={`bg-white p-2 min-h-[80px] hover:bg-secondary/10 transition-colors flex flex-col gap-1 ${!d.isCurrentMonth ? 'bg-secondary/5 text-muted-foreground/50' : ''}`}>
+                                    <div
+                                        key={i}
+                                        onClick={() => setSelectedDate(d.date)}
+                                        className={`bg-white p-2 min-h-[80px] hover:bg-secondary/10 transition-colors flex flex-col gap-1 cursor-pointer ${!d.isCurrentMonth ? 'bg-secondary/5 text-muted-foreground/50' : ''}`}
+                                    >
                                         <span className={`text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full ${isSameDate(d.date, new Date()) ? 'bg-foreground text-background' : ''}`}>
                                             {d.date.getDate()}
                                         </span>
                                         <div className="flex flex-col gap-1 mt-1">
                                             {dayEvents.map(ev => (
-                                                <div key={ev.id} className={`h-1.5 rounded-full w-full ${colorStyles[ev.color].bg.replace('bg-', 'bg-').replace('100', '400')}`} />
+                                                <div key={ev.id} className={`px-1.5 py-0.5 rounded text-[9px] truncate w-full font-medium ${colorStyles[ev.color].bg} ${colorStyles[ev.color].text}`}>
+                                                    {ev.title}
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
@@ -348,24 +363,47 @@ const CalendarView = ({ isPreview = false }: { isPreview?: boolean }) => {
                                         ))}
 
                                         {/* Events */}
-                                        {events
-                                            .filter(e => isSameDate(e.start, dayDate))
-                                            .map(event => {
+                                        {(() => {
+                                            const dayEvents = events.filter(e => isSameDate(e.start, dayDate));
+
+                                            // Simple collision detection for identical times
+                                            const timeGroups: Record<string, Event[]> = {};
+                                            dayEvents.forEach(e => {
+                                                const key = e.timeString;
+                                                if (!timeGroups[key]) timeGroups[key] = [];
+                                                timeGroups[key].push(e);
+                                            });
+
+                                            return dayEvents.map(event => {
                                                 const style = colorStyles[event.color];
                                                 const pos = getEventStyle(event);
+
+                                                // Determine width and left based on group
+                                                const group = timeGroups[event.timeString];
+                                                const index = group.indexOf(event);
+                                                const count = group.length;
+
+                                                const width = 96 / count;
+                                                const left = 2 + (index * width);
+
                                                 return (
                                                     <div
                                                         key={event.id}
                                                         onClick={(e) => handleEventClick(e, event)}
-                                                        className={`absolute left-1 right-1 rounded-lg p-2 border-l-4 cursor-pointer hover:brightness-95 transition-all shadow-sm ${style.bg} ${style.border} overflow-hidden z-10`}
-                                                        style={{ top: pos.top, height: pos.height }}
+                                                        className={`absolute rounded-lg p-2 border-l-4 cursor-pointer hover:brightness-95 transition-all shadow-sm ${style.bg} ${style.border} overflow-hidden z-10`}
+                                                        style={{
+                                                            top: pos.top,
+                                                            height: pos.height,
+                                                            left: `${left}%`,
+                                                            width: `${width}%`
+                                                        }}
                                                     >
-                                                        <h4 className={`font-semibold text-[10px] md:text-xs leading-tight mb-0.5 ${style.text}`}>{event.title}</h4>
-                                                        <p className={`text-[9px] ${style.subtext} hidden md:block`}>{event.timeString}</p>
+                                                        <h4 className={`font-semibold text-[10px] md:text-xs leading-tight mb-0.5 ${style.text} truncate`}>{event.title}</h4>
+                                                        <p className={`text-[9px] ${style.subtext} hidden md:block truncate`}>{event.timeString}</p>
                                                     </div>
                                                 );
-                                            })
-                                        }
+                                            });
+                                        })()}
                                     </div>
                                 ))}
                             </div>
@@ -374,7 +412,64 @@ const CalendarView = ({ isPreview = false }: { isPreview?: boolean }) => {
                 )}
             </div>
 
-            {/* Dynamic Popover */}
+            {/* Date Details Modal */}
+            <AnimatePresence>
+                {selectedDate && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] md:w-[400px] bg-white rounded-2xl shadow-xl border border-border p-6 z-50 overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex justify-between items-center mb-6">
+                            <h3 className="font-bold text-xl leading-tight">
+                                {formatDayName(selectedDate)}, {formatDate(selectedDate)}
+                            </h3>
+                            <button onClick={() => setSelectedDate(null)} className="p-2 hover:bg-secondary rounded-full transition-colors shrink-0">
+                                <X size={20} className="text-muted-foreground" />
+                            </button>
+                        </div>
+
+                        <div className="space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-2">
+                            {(() => {
+                                const dayEvents = events.filter(e => isSameDate(e.start, selectedDate));
+
+                                if (dayEvents.length === 0) {
+                                    return (
+                                        <div className="text-center py-8 text-muted-foreground">
+                                            <p>No event is present</p>
+                                        </div>
+                                    );
+                                }
+
+                                return dayEvents.map(event => (
+                                    <div key={event.id} className={`p-4 rounded-xl border ${colorStyles[event.color].bg} ${colorStyles[event.color].border} border-opacity-50`}>
+                                        <h4 className={`text-lg font-semibold mb-2 ${colorStyles[event.color].text}`}>{event.title}</h4>
+
+                                        <div className="flex items-center gap-2 mb-3 text-muted-foreground/80">
+                                            <Clock size={14} />
+                                            <span className="text-sm font-medium">{event.timeString}</span>
+                                        </div>
+
+                                        {event.tags && (
+                                            <div className="flex gap-2 flex-wrap">
+                                                {event.tags.map(tag => (
+                                                    <span key={tag} className="px-2 py-1 text-[10px] uppercase tracking-wider font-bold bg-white/50 rounded-md text-foreground/70">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ));
+                            })()}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Event Details Popover (Week/Day) */}
             <AnimatePresence>
                 {selectedEvent && (
                     <motion.div

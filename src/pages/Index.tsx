@@ -7,30 +7,9 @@ import { DoodleCircle, DoodleSquiggle, DoodleCross, DoodleTriangle, DoodleDots, 
 import event1 from "@/assets/event-1.jpg";
 import event2 from "@/assets/event-2.jpg";
 import event3 from "@/assets/event-3.jpg";
+import { allEvents } from "./Events";
 
-const featuredEvents = [
-  {
-    image: event1,
-    title: "HackFest 2026",
-    date: "March 15, 2026",
-    description: "A 24-hour hackathon building solutions with Google Cloud and AI.",
-    color: "google-blue" as const,
-  },
-  {
-    image: event2,
-    title: "Flutter Forward",
-    date: "April 8, 2026",
-    description: "Deep-dive workshop on building cross-platform apps with Flutter.",
-    color: "google-red" as const,
-  },
-  {
-    image: event3,
-    title: "Community Connect",
-    date: "May 20, 2026",
-    description: "Networking event connecting students with industry professionals.",
-    color: "google-green" as const,
-  },
-];
+const featuredEvents = allEvents.slice(0, 3);
 
 const focusPoints = [
   {
