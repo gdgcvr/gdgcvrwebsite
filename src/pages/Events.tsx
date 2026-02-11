@@ -9,12 +9,12 @@ import event2 from "@/assets/event-2.jpg";
 import event3 from "@/assets/event-3.jpg";
 
 export const allEvents = [
-  { title: "HackFest 2026", date: "March 15, 2026", description: "A 24-hour hackathon building solutions with Google Cloud and AI.", image: event1, upcoming: true, color: "google-blue" },
-  { title: "Flutter Forward", date: "April 8, 2026", description: "Deep-dive workshop on building cross-platform apps with Flutter.", image: event2, upcoming: true, color: "google-red" },
-  { title: "Community Connect", date: "May 20, 2026", description: "Networking event connecting students with industry professionals.", image: event3, upcoming: true, color: "google-green" },
-  { title: "DevFest 2025", date: "November 10, 2025", description: "Annual developer festival featuring talks, codelabs, and networking.", image: event1, upcoming: false, color: "google-yellow" },
-  { title: "Cloud Study Jam", date: "September 5, 2025", description: "Hands-on lab session exploring Google Cloud Platform fundamentals.", image: event2, upcoming: false, color: "google-blue" },
-  { title: "Android Workshop", date: "July 22, 2025", description: "Building modern Android apps with Jetpack Compose.", image: event3, upcoming: false, color: "google-green" },
+  { title: "Resume Building Session", date: "February 13, 2026", description: "Learn how to craft a perfect resume to crack top tech companies.", image: event1, upcoming: true, color: "google-blue" },
+  { title: "Web Dev Sessions", date: "Every Tue & Thu", description: "Master full-stack web development from basics to advanced frameworks.", image: event2, upcoming: true, color: "google-blue" },
+  { title: "AIML-DS Sessions", date: "Every Wed & Thu", description: "Dive deep into Artificial Intelligence, Machine Learning and Data Science.", image: event3, upcoming: true, color: "google-red" },
+  { title: "Android Sessions", date: "Every Wednesday", description: "Build modern Android applications using Kotlin and Jetpack Compose.", image: event1, upcoming: true, color: "google-green" },
+  { title: "CP Sessions", date: "Every Mon & Fri", description: "Sharpen your algorithmic skills with Competitive Programming sessions.", image: event2, upcoming: true, color: "google-yellow" },
+  { title: "IoT Sessions", date: "Every Friday", description: "Explore the world of Internet of Things and Hardware projects.", image: event3, upcoming: true, color: "google-blue" },
 ];
 
 const colorBorder: Record<string, string> = {
