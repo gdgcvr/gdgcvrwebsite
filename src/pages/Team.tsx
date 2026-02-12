@@ -135,7 +135,13 @@ const Team = () => {
               </p>
               <h1 className="heading-lg max-w-3xl mx-auto">
                 Meet the minds behind <br />
-                <span className="text-google-blue">GDG Campus</span>
+                <motion.span
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-google-red to-google-yellow bg-[length:200%_auto]"
+                  animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                >
+                  GDG On Campus
+                </motion.span>
               </h1>
             </div>
           </AnimatedSection>
