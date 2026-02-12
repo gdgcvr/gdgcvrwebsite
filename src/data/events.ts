@@ -1,7 +1,11 @@
-import event1 from "@/assets/event-1.jpg";
-import event2 from "@/assets/event-2.jpg";
-import event3 from "@/assets/event-3.jpg";
-import solution_challenge from "@/assets/solution_challenge.jpeg";
+import event1 from "@/assets/events/event-1.jpg";
+import event2 from "@/assets/events/event-2.jpg";
+import event3 from "@/assets/events/event-3.jpg";
+import solution_challenge from "@/assets/events/solution_challenge.jpeg";
+import kickstart from "@/assets/events/kickstart.webp";
+import gcp from "@/assets/events/gcp.png";
+import web from "@/assets/events/web.jpg";
+import cyrrup from "@/assets/events/cyrrup.png";
 
 export const allEvents = [
   {
@@ -72,7 +76,7 @@ export const allEvents = [
     date: "15 Sept 2021",
     description:
       "In this event we introduced the GDSC club and its members to the student community and had an interactive informative session, receiving over 200 new admissions.",
-    image: event2,
+    image: kickstart,
     upcoming: false,
     color: "google-green",
   },
@@ -81,7 +85,7 @@ export const allEvents = [
     date: "02 Nov 2021",
     description:
       "An online webinar helping students understand the 30 Days of Google Cloud program and resolving technical issues for participants.",
-    image: event1,
+    image: gcp,
     upcoming: false,
     color: "google-blue",
   },
@@ -99,7 +103,7 @@ export const allEvents = [
     date: "18 Oct 2021",
     description:
       "A 3-day intensive webinar covering Git, HTML, CSS, and Javascript, including the implementation of two hands-on projects.",
-    image: event1,
+    image: web,
     upcoming: false,
     color: "google-yellow",
   },
@@ -108,7 +112,7 @@ export const allEvents = [
     date: "08 Nov 2021",
     description:
       "A collaborative training session on Web Development offering students the opportunity to work on real-life technical projects.",
-    image: event2,
+    image: cyrrup,
     upcoming: false,
     color: "google-green",
   },
