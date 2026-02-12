@@ -50,93 +50,153 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-20 bg-transparent">
-        {/* Gradient Mesh Background */}
-        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-google-blue/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-google-red/20 rounded-full blur-[120px] animate-pulse delay-1000"></div>
-          <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-google-yellow/20 rounded-full blur-[120px] animate-pulse delay-2000"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-google-green/20 rounded-full blur-[120px] animate-pulse delay-3000"></div>
+      {/* Hero - Premium Cinematic Stage */}
+      {/* Hero - The Premium Ecosystem Grid */}
+      {/* Hero - The Swiss Interface Grid (High Visibility Mode) */}
+      <section className="relative min-h-[95vh] pt-28 md:pt-32 pb-10 flex justify-center items-center bg-[#fafafa] selection:bg-black selection:text-white px-4 md:px-8 overflow-hidden">
+
+        {/* Background Grid - VISIBLE & TECHNICAL */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* 1. Base Dot Grid (High Contrast) */}
+          <div className="absolute inset-0 opacity-[0.2]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1.5'/%3E%3C/g%3E%3C/svg%3E\")" }}></div>
+
+          {/* 2. Secondary Linear Grid (Architecture/Graph Paper Feel) */}
+          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '100px 100px' }}></div>
+
+          {/* 3. Gradient Blobs (Subtle) */}
+          <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-google-blue/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
+          <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] bg-google-yellow/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse" style={{ animationDelay: "1s" }}></div>
         </div>
 
-        {/* Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        {/* The Grid Container - Constrained & Aligned (Glass Effect on Cells) */}
+        <div className="relative z-10 w-full max-w-[1400px] h-full grid grid-cols-1 md:grid-cols-12 grid-rows-[auto_auto_auto] md:grid-rows-2 gap-4 md:gap-6">
 
-        <div className="container-wide relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="text-left">
-            <AnimatedSection>
-              <div className="inline-block px-4 py-1.5 rounded-full border border-black/5 bg-secondary/30 text-sm font-semibold tracking-wide mb-6">
-                <span className="w-2 h-2 rounded-full bg-google-green inline-block mr-2 animate-pulse"></span>
-                CVR COLLEGE OF ENGINEERING
+          {/* 1. Main Title Block (Dominant) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="col-span-1 md:col-span-8 row-span-1 md:row-span-2 bg-neutral-50 rounded-[2rem] p-8 md:p-12 border border-neutral-100 relative overflow-hidden group flex flex-col justify-between"
+          >
+            {/* Background Texture */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `radial-gradient(#000 1px, transparent 1px)`, backgroundSize: '24px 24px' }}></div>
+            <div className="absolute top-0 right-0 p-6 md:p-8">
+              <div className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+                <ArrowRight className="text-neutral-400 group-hover:text-black transition-colors" />
               </div>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection delay={0.1}>
-              <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8 text-black">
-                WE <br />
-                <span className="text-google-blue">BUILD</span> <br />
-                <span className="text-white" style={{ WebkitTextStroke: "2px black" }}>FUTURE.</span>
-              </h1>
-            </AnimatedSection>
+            <div className="relative z-10 mt-auto">
+              <motion.h1
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-5xl md:text-[5rem] lg:text-[7rem] font-bold leading-[0.9] tracking-tight text-neutral-900"
+              >
+                WHERE <br />
+                CAMPUS <br />
+                MEETS <br />
+                <motion.span
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-google-red to-google-yellow bg-[length:200%_auto]"
+                  animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                >
+                  GOOGLE
+                </motion.span>
+              </motion.h1>
+              <p className="mt-6 text-neutral-500 font-medium max-w-md text-lg">
+                The bridge between theory and impact. <a href="https://cvr.ac.in/home4/" target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-neutral-800 border-b border-neutral-300 hover:border-black transition-colors">CVR College of Engineering</a>'s premier developer ecosystem.
+              </p>
+            </div>
+          </motion.div>
 
+          {/* 2. The Interactive Component Stack (Right Column) */}
+          <div className="col-span-1 md:col-span-4 row-span-1 md:row-span-2 flex flex-col gap-4 md:gap-6">
 
+            {/* 2a. Live Terminal (The "Code" Element) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="flex-1 bg-neutral-900 rounded-[2rem] p-6 relative overflow-hidden group min-h-[200px]"
+            >
+              {/* Traffic Lights */}
+              <div className="flex gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+              </div>
+              {/* Code Content */}
+              <div className="font-mono text-xs md:text-sm text-neutral-400 space-y-1">
+                <p><span className="text-purple-400">const</span> <span className="text-blue-400">future</span> = <span className="text-yellow-400">init</span>();</p>
+                <p><span className="text-purple-400">await</span> future.<span className="text-green-400">build</span>();</p>
+                <div className="flex items-center gap-2 mt-4 text-white">
+                  <span className="text-green-500">➜</span>
+                  <span className="animate-pulse">_</span>
+                </div>
+              </div>
+              <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="px-3 py-1 bg-white/10 rounded-full text-xs text-white backdrop-blur-md">Start Building</div>
+              </div>
+            </motion.div>
 
-            <AnimatedSection delay={0.3}>
-              <div className="flex flex-wrap gap-4">
-                <Link to="/events" className="px-8 py-4 border-2 border-black rounded-xl font-bold hover:bg-black hover:text-white transition-all">
-                  View Events
+            {/* 2b. Event Ticker (The "Time" Element) - ACTIVE BLUE */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="flex-1 bg-google-blue border border-google-blue rounded-[2rem] p-6 relative overflow-hidden group shadow-lg shadow-google-blue/20 min-h-[180px]"
+            >
+              <div className="flex justify-between items-start">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-google-blue shadow-sm">
+                  <Zap size={18} fill="currentColor" />
+                </div>
+                <span className="text-xs font-bold uppercase tracking-widest text-white/80">Next Event</span>
+              </div>
+              <div className="mt-8">
+                <h3 className="text-2xl font-bold text-white">Tech Summit</h3>
+                <p className="text-white/80">Feb 24 • Hyderabad</p>
+              </div>
+              {/* Decorative Big Icon */}
+              <Zap className="absolute -bottom-4 -right-4 w-32 h-32 text-white/10 transform -rotate-12 pointer-events-none" />
+            </motion.div>
+
+            {/* 2c. Community & Join (Split) */}
+            <div className="flex gap-4 md:gap-6 flex-1 min-h-[140px]">
+
+              {/* Community */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="flex-1 bg-white border border-neutral-100 rounded-[2rem] p-5 flex flex-col justify-center items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-shadow"
+              >
+                <div className="flex -space-x-2 mb-3">
+                  {[1, 2, 3].map(i => (
+                    <div key={i} className="w-8 h-8 rounded-full bg-neutral-100 border-2 border-white"></div>
+                  ))}
+                </div>
+                <span className="text-sm font-bold text-neutral-900">500+</span>
+                <span className="text-xs text-neutral-500 uppercase tracking-wide">Members</span>
+              </motion.div>
+
+              {/* Join Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="flex-1"
+              >
+                <Link to="/team" className="h-full w-full bg-google-red rounded-[2rem] p-5 flex flex-col justify-center items-center text-white relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-black/10 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
+                  <span className="relative z-10 font-bold text-lg">Team</span>
+                  <ArrowRight className="relative z-10 w-5 h-5 mt-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
-            </AnimatedSection>
+              </motion.div>
+
+            </div>
           </div>
 
-          {/* Right Content - 3D Elements */}
-          <div className="relative hidden lg:block h-[600px] w-full perspective-1000">
-            <motion.div
-              initial={{ rotateX: 10, rotateY: -10, rotateZ: 5 }}
-              animate={{ rotateX: [10, 5, 10], rotateY: [-10, -5, -10], rotateZ: [5, 2, 5] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-10 w-[400px] h-[500px] bg-white border-2 border-black rounded-3xl shadow-[20px_20px_0px_0px_rgba(0,0,0,1)] flex flex-col overflow-hidden"
-            >
-              <div className="bg-black p-4 flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <div className="p-8 flex-1 bg-secondary/20 relative">
-                <div className="font-mono text-sm text-google-blue mb-2">import  Future  from 'gdg-cvr';</div>
-                <div className="font-mono text-xs text-muted-foreground leading-loose">
-                  <span className="text-google-red">class</span> <span className="text-black font-bold">Developer</span> {"{"} <br />
-                  &nbsp;&nbsp;skills: [<span className="text-google-green">'CP'</span>, <span className="text-google-green">'Web'</span>, <span className="text-google-green">'AI'</span>,<span className="text-google-green">'IOT'</span>,<span className="text-google-green">'App'</span>,<span className="text-google-green">'DS'</span>]; <br />
-                  &nbsp;&nbsp;passion: <span className="text-google-blue">true</span>; <br />
-                  &nbsp;&nbsp;status: <span className="text-black">'Building...'</span>; <br />
-                  {"}"}
-                </div>
-
-                {/* Abstract Shapes inside the card */}
-                <div className="absolute bottom-10 right-10 w-24 h-24 bg-google-yellow rounded-full blur-2xl opacity-50"></div>
-                <div className="absolute top-1/2 left-10 w-16 h-16 bg-google-blue rounded-full blur-xl opacity-40"></div>
-              </div>
-            </motion.div>
-
-            {/* Floating Element 2 */}
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-20 left-10 p-6 bg-white border-2 border-black rounded-2xl shadow-[10px_10px_0px_0px_#EA4335]"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-google-red/10 rounded-full flex items-center justify-center text-google-red font-bold text-xl">
-                  <Zap size={24} />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">Workshop</div>
-                  <div className="text-lg font-black leading-none">Flutter Forward</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -188,49 +248,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Events */}
-      <section className="section-padding border-t border-border relative">
-        <DoodleCircle className="absolute top-16 right-[10%] w-20 h-20 opacity-10 text-google-red" />
-        <DoodleSpark className="absolute bottom-32 left-[8%] w-8 h-8 opacity-10 text-google-yellow" />
 
-        <div className="container-wide">
-          <AnimatedSection>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-google-blue mb-8">Events</p>
-                <h2 className="heading-lg">What's happening</h2>
-              </div>
-              <Link
-                to="/events"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-google-blue hover:opacity-80 transition-opacity"
-              >
-                View All Events
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {featuredEvents.map((event, i) => (
-              <AnimatedSection key={event.title} delay={0.12 * i}>
-                <div className={`group border-t-2 ${colorBorder[event.color]} pt-8`}>
-                  <div className="aspect-[16/10] rounded-xl overflow-hidden mb-7 bg-muted">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                      loading="lazy"
-                    />
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-3 tracking-wide uppercase">{event.date}</p>
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-google-blue transition-colors duration-200">{event.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
     </Layout>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import Layout from "@/components/Layout";
@@ -35,16 +36,56 @@ const Events = () => {
 
   return (
     <Layout>
-      <section className="pt-24 pb-10 relative">
-        <DoodleSquiggle className="absolute top-24 left-[5%] w-28 opacity-8 text-google-blue" />
-        <DoodleTriangle className="absolute bottom-36 right-[8%] w-14 h-14 opacity-8 text-google-red" />
-        <DoodleSpark className="absolute top-1/3 right-[12%] w-8 h-8 opacity-8 text-google-yellow" />
+      {/* Digital Horizon Background (Events Specific) */}
+      <div className="absolute inset-0 z-[-1] pointer-events-none">
+        <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#fafafa]">
 
-        <div className="container-wide">
+          {/* Top Spotlight Gradient */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[500px] bg-gradient-to-b from-google-blue/5 to-transparent rounded-full blur-[120px]"></div>
+
+          {/* Horizon Lines SVG */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.4]" preserveAspectRatio="none" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Horizontal Timeline Markers */}
+            <line x1="0" y1="200" x2="1440" y2="200" stroke="#E5E5E5" strokeWidth="1" strokeDasharray="10 10" />
+            <line x1="0" y1="400" x2="1440" y2="400" stroke="#E5E5E5" strokeWidth="1" strokeDasharray="10 10" />
+            <line x1="0" y1="600" x2="1440" y2="600" stroke="#E5E5E5" strokeWidth="1" strokeDasharray="10 10" />
+
+            {/* Vertical Data Streams */}
+            <line x1="200" y1="0" x2="200" y2="800" stroke="#E5E5E5" strokeWidth="1" opacity="0.5" />
+            <line x1="1240" y1="0" x2="1240" y2="800" stroke="#E5E5E5" strokeWidth="1" opacity="0.5" />
+
+            {/* Active Event Pulse Lines (Google Colors) */}
+            <motion.line
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 2, ease: "easeOut" }}
+              x1="0" y1="199" x2="1440" y2="199"
+              stroke="#4285F4" strokeWidth="2" strokeOpacity="0.3"
+            />
+            <motion.line
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 2.5, ease: "easeOut", delay: 0.5 }}
+              x1="200" y1="0" x2="200" y2="400"
+              stroke="#DB4437" strokeWidth="2" strokeOpacity="0.3"
+            />
+          </svg>
+
+          {/* Grain Overlay */}
+          <div className="absolute inset-0 opacity-[0.2]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
+        </div>
+      </div>
+
+      <section className="pt-36 pb-10 relative">
+        <div className="container-wide relative z-10">
 
 
           <AnimatedSection delay={0.05}>
-            <div className="mb-16 group relative rounded-3xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="text-center mb-8">
+              <h1 className="heading-lg">Upcoming Sessions</h1>
+            </div>
+
+            <div className="mb-8 group relative rounded-3xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md transition-all duration-300">
               <Link to="/calendar" className="block relative">
                 <div className="h-[450px] pointer-events-none select-none transition-all duration-300">
                   <CalendarView isPreview={true} />
@@ -60,7 +101,7 @@ const Events = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="flex gap-2 mt-12">
+            <div className="flex gap-2 mt-8">
               {(["all", "upcoming", "past"] as const).map((f) => (
                 <button
                   key={f}
@@ -76,7 +117,7 @@ const Events = () => {
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-10 mt-16">
+          <div className="grid md:grid-cols-3 gap-8 mt-10">
             {filtered.map((event, i) => (
               <AnimatedSection key={event.title + event.date} delay={0.06 * i}>
                 <div className={`group border-t-2 ${colorBorder[event.color]} pt-8`}>
