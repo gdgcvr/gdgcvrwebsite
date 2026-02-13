@@ -1,12 +1,12 @@
 export const teamMembers = [
   {
     name: "Vijaya Mair",
-    role: "Placement Co-ordinator and Mentor",
-    image: "https://cvr.ac.in/home4/images/po.jpg",
+    role: "Dean, Career Development Centre",
+    image: "src/assets/team/vijaya_mair.jpg",
     linkedin: "https://linkedin.com/in/vijayamair/",
   },
   {
-    name: "Sitharam Nagesh Appe",
+    name: "Dr. A. Seetharam Nagesh",
     role: "Faculty Co-Ordinator",
     image: "https://cvr.ac.in/it/itphotos/nagesh.JPG",
     linkedin: "https://linkedin.com/in/dr-seetharamnagesh-appe-4584281aa/",

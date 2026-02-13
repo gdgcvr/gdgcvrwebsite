@@ -10,11 +10,9 @@ import {
 import { teamMembers } from "@/data/team";
 
 const Team = () => {
-  // Helper to categorize members
-  // Helper to categorize members
   const getCategory = (role: string) => {
     const r = role.toLowerCase();
-    if (r.includes("faculty") || r.includes("placement") || (r.includes("lead") && !r.includes("core"))) return "Leadership";
+    if (r.includes("faculty") || r.includes("placement") || r.includes("dean") || r.includes("principal") || (r.includes("lead") && !r.includes("core"))) return "Leadership";
     if (r.includes("cp") || r.includes("competitive")) return "Competitive Programming";
     if (r.includes("web")) return "Web Development";
     if (r.includes("aiml") || r.includes("data")) return "AI/ML & Data Science";
@@ -36,12 +34,6 @@ const Team = () => {
     "Logistics & Management": { icon: Users, color: "text-google-green", description: "Making things happen." },
     "Graphic Design": { icon: Palette, color: "text-google-red", description: "Visualizing our identity." },
     "Photography": { icon: Camera, color: "text-google-yellow", description: "Capturing moments." },
-    // Core Team is fallback, can be added if needed, but user list didn't explicitly include it. I'll keep it as fallback in safe logic but maybe not in the main ordered list if not requested? 
-    // Wait, the previous code had "Core Team". If I remove it from `categories`, it won't render even if `getCategory` returns it (because of `Object.keys(categories)` loop).
-    // The user's list didn't have "Core Team". I will remove "Core Team" from the specific order list to be safe, or append it at the end? 
-    // User said "Order teams in this way" and gave a list.
-    // Use fallback? Use "Core Team" key if `getCategory` returns it? 
-    // I'll keep "Core Team" at the very end as a catch-all, just in case data exists that doesn't fit, so it doesn't disappear.
     "Core Team": { icon: Users, color: "text-google-blue", description: "The heartbeat of our community." },
   };
 
@@ -55,8 +47,6 @@ const Team = () => {
     const cat = getCategory(member.role);
     if (groupedMembers[cat]) {
       groupedMembers[cat].push(member);
-    } else {
-      // Fallback or explicit 'Other' handling if needed
     }
   });
 

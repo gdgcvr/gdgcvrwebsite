@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { ArrowRight, Users, Zap, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -8,6 +8,7 @@ import {
   DoodleDots,
   DoodleLine,
 } from "@/components/DoodleAccents";
+import { nextEvent } from "@/data/events";
 
 const focusPoints = [
   {
@@ -193,8 +194,16 @@ const Index = () => {
                 </span>
               </div>
               <div className="mt-8">
-                <h3 className="text-2xl font-bold text-white">Tech Summit</h3>
-                <p className="text-white/80">Feb 24 • Hyderabad</p>
+                <h3 className="text-2xl font-bold text-white">
+                  {nextEvent.title}
+                </h3>
+                <p className="text-white/80">{nextEvent.date}</p>
+                <p
+                  className="mt-2 text-white/70 text-sm truncate"
+                  title={nextEvent.description}
+                >
+                  {nextEvent.description}
+                </p>
               </div>
               {/* Decorative Big Icon */}
               <Zap className="absolute -bottom-4 -right-4 w-32 h-32 text-white/10 transform -rotate-12 pointer-events-none" />
@@ -215,7 +224,7 @@ const Index = () => {
                 >
                   <div className="absolute inset-0 bg-black/10 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
                   <span className="relative z-10 font-bold text-lg">
-                    Events
+                    All Events
                   </span>
                   <ArrowRight className="relative z-10 w-5 h-5 mt-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
