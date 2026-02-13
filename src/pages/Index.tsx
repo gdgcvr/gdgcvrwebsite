@@ -201,7 +201,7 @@ const Index = () => {
       </section>
 
       {/* About */}
-      <section className="section-padding border-t border-border relative">
+      <section className="pt-24 pb-24 border-t border-border relative">
         <DoodleSquiggle className="absolute top-20 left-1/3 w-32 opacity-8 text-google-green" />
         <DoodleDots className="absolute bottom-24 right-[8%] w-16 h-16 opacity-8 text-google-yellow" />
         <DoodleLine className="absolute top-1/2 right-[20%] w-24 opacity-8 text-google-red" />

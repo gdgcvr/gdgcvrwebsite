@@ -14,7 +14,7 @@ const Team = () => {
   // Helper to categorize members
   const getCategory = (role: string) => {
     const r = role.toLowerCase();
-    if (r.includes("faculty") || r.includes("placement") || (r.includes("lead") && !r.includes("core"))) return "Leadership";
+    if (r.includes("faculty") || r.includes("placement") || r.includes("dean") || (r.includes("lead") && !r.includes("core"))) return "Leadership";
     if (r.includes("cp") || r.includes("competitive")) return "Competitive Programming";
     if (r.includes("web")) return "Web Development";
     if (r.includes("aiml") || r.includes("data")) return "AI/ML & Data Science";
@@ -192,7 +192,7 @@ const Team = () => {
                                 <img
                                   src={member.image}
                                   alt={member.name}
-                                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                                  className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
                                 />
 
                                 {/* Overlay */}
