@@ -49,7 +49,7 @@ const Events = () => {
           {/* Header */}
           <AnimatedSection delay={0.05}>
             <div className="flex flex-col items-center gap-4 mb-16 border-b border-black/5 pb-8 w-full text-center">
-              <h1 className="heading-lg mb-2">Upcoming Sessions</h1>
+              <h1 className="heading-lg mb-2">Upcoming Events</h1>
               <p className="body-lg text-neutral-500 max-w-md">
                 Secure your spot. Join us for workshops, hackathons, and tech talks.
               </p>

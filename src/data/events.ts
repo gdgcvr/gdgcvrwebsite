@@ -1,9 +1,8 @@
 export const nextEvent = {
-  title: "Mock Placement Drive",
-  date: "Feb 20-21, 2026",
-  description: "Simulating real-world placement scenarios to prepare you for success.",
+  title: "IoT Workshop",
+  date: "March 16, 2026",
+  description: "Hands-on workshop exploring Internet of Things, embedded systems, and real-time device communication.",
 }
-
 export const allEvents = [
   {
     title: "Mock Placement Drive",
@@ -13,8 +12,32 @@ export const allEvents = [
     descriptionLong: "Our Mock Placement Drive is designed to give students a realistic experience of the recruitment process. This two-day event includes aptitude tests, technical interviews, and HR rounds, all conducted by industry experts and senior students. It's a perfect opportunity to identify your strengths and work on your weaknesses before the actual placement season begins.",
     image: "/events/mock_final.jpeg",
     gallery: ["/events/mock_final.jpeg", "/events/mock_placements.jpeg"],
-    upcoming: true,
+    upcoming: false,
     color: "google-blue",
+  },
+  {
+    title: "IoT Workshop",
+    date: "March 16, 2026",
+    description:
+      "Hands-on workshop introducing the fundamentals of Internet of Things and embedded systems.",
+    descriptionLong:
+      "The IoT Workshop is designed to help students understand the fundamentals of Internet of Things, embedded systems, and smart device communication. Participants will get hands-on experience with sensors, microcontrollers, and real-time data processing while building small IoT-based prototypes. This workshop will help students gain practical exposure to how connected devices work in modern smart systems.",
+    image: "/events/iot_workshop.png",
+    gallery: ["/events/iot_workshop.jpeg", "/events/iot_workshop2.jpeg"],
+    upcoming: true,
+    color: "google-green",
+  },
+  {
+    title: "IoT Project Expo",
+    date: "March 28, 2026",
+    description:
+      "Showcasing innovative real-world embedded and IoT-based projects built by students.",
+    descriptionLong:
+      "The IoT Project Expo is an exciting event where students showcase innovative projects that combine embedded systems, Internet of Things, and Artificial Intelligence. The expo focuses on solving real-world problems through smart connected devices and intelligent automation. Visitors will explore a wide range of projects demonstrating the power of IoT technology and its applications in areas such as smart homes, healthcare, agriculture, and automation.",
+    image: "/events/iot_workshop.png",
+    gallery: ["/events/iot_expo.jpeg", "/events/iot_expo2.jpeg"],
+    upcoming: true,
+    color: "google-red",
   },
   {
     title: "Resume Building Session",
