@@ -78,21 +78,21 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed top-28 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm bg-white rounded-3xl shadow-[0_8px_0_0_rgba(0,0,0,0.08)] border border-black/5 overflow-hidden md:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-24 inset-x-4 z-[100] max-w-sm mx-auto bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-black/5 overflow-hidden md:hidden"
           >
-            <div className="p-3 flex flex-col gap-1">
+            <div className="p-2 flex flex-col gap-1.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`w-full text-center px-4 py-3 rounded-2xl text-base font-medium transition-all ${location.pathname === link.path
-                      ? "bg-secondary text-foreground"
-                      : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground hover:pl-6"
+                  className={`flex items-center justify-center w-full px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${location.pathname === link.path
+                      ? "bg-secondary text-foreground shadow-sm"
+                      : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
                     }`}
                 >
                   {link.name}

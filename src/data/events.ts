@@ -57,8 +57,8 @@ export const allEvents = [
       "Master full-stack web development from basics to advanced frameworks.",
     descriptionLong: "Our Web Development sessions cover the entire stack, from HTML/CSS and JavaScript to modern frameworks like React and Node.js. These are hands-on workshops where you'll build real-world projects, learn best practices in frontend and backend development, and understand how to deploy your applications.",
     image: "/events/web_sesh1.jpeg",
-    gallery: ["/events/web_sesh1.jpeg", "/events/web_sesh3.jpeg"],
-    upcoming: true,
+    gallery: ["/events/web_sesh2.jpeg", "/events/web_sesh3.jpeg"],
+    upcoming: false,
     color: "google-yellow",
   },
   {
@@ -69,7 +69,7 @@ export const allEvents = [
     descriptionLong: "Explore the fascinating world of AI, Machine Learning, and Data Science. Our sessions range from basic statistical concepts to advanced neural networks and deep learning. You'll gain practical experience using libraries like TensorFlow, PyTorch, and Scikit-learn, working on projects involving computer vision, NLP, and more.",
     image: "/events/AIML.jpeg",
     gallery: ["/events/AIML.jpeg"],
-    upcoming: true,
+    upcoming: false,
     color: "google-red",
   },
   {
@@ -80,7 +80,7 @@ export const allEvents = [
     descriptionLong: "Join our Android Development sessions to learn how to create beautiful and functional mobile apps. We focus on modern development using Kotlin and Jetpack Compose. You'll learn about app architecture, UI design, data persistence, and how to leverage Google Play services in your apps.",
     image: "/events/mock_placements.jpeg",
     gallery: [],
-    upcoming: true,
+    upcoming: false,
     color: "google-green",
   },
   {
@@ -91,7 +91,7 @@ export const allEvents = [
     descriptionLong: "Competitive Programming is the key to cracking technical interviews at top-tier companies. Our sessions focus on data structures, algorithms, and problem-solving techniques. We practice on platforms like Codeforces and LeetCode, and hold regular internal contests to track progress.",
     image: "/events/web_sesh2.jpeg",
     gallery: [],
-    upcoming: true,
+    upcoming: false,
     color: "google-yellow",
   },
   {
@@ -102,7 +102,7 @@ export const allEvents = [
     descriptionLong: "Dive into the intersection of hardware and software. Our IoT sessions cover everything from basic electronics and Arduino/Raspberry Pi programming to connecting devices to the cloud. You'll work on projects like smart home automation, environmental monitoring systems, and more.",
     image: "/events/event-3.jpg",
     gallery: ["/events/event-3.jpg", "/events/kickstart.webp", "/events/event-1.jpg"],
-    upcoming: true,
+    upcoming: false,
     color: "google-blue",
   },
   {

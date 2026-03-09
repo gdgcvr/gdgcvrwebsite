@@ -167,11 +167,11 @@ const Team = () => {
                   </AnimatedSection>
 
                   {/* Flex Container: Centered, One Line, Shrinks to Fit */}
-                  <div className="flex w-full justify-center gap-2 md:gap-4 px-2 md:px-0">
+                  <div className="flex w-full justify-center gap-3 md:gap-4 flex-wrap px-4 md:px-0">
                     {members.map((member, i) => {
                       const bgColor = info.color.replace("text-", "bg-");
                       return (
-                        <AnimatedSection key={member.name} delay={0.05 * i} className="flex-1 max-w-[220px] md:max-w-[280px] min-w-0">
+                        <AnimatedSection key={member.name} delay={0.05 * i} className="w-[140px] sm:w-[180px] md:w-[220px] lg:w-[240px] shrink-0">
                           <div className="group relative cursor-pointer h-full w-full">
                             {/* Offset Color Shadow */}
                             <div className={`absolute inset-0 rounded-2xl transform translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2 group-hover:translate-x-2 group-hover:translate-y-2 md:group-hover:translate-x-4 md:group-hover:translate-y-4 transition-transform duration-300 ${bgColor} opacity-0 group-hover:opacity-100 rounded-tr-[1.5rem] md:rounded-tr-[2rem]`}></div>
