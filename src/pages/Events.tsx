@@ -271,7 +271,7 @@ const Events = () => {
                     </div>
 
                     {/* Gallery Section */}
-                    {(selectedEvent as any).gallery && (selectedEvent as any).gallery.length > 0 && (
+                    {!selectedEvent.upcoming && (selectedEvent as any).gallery && (selectedEvent as any).gallery.length > 0 && (
                       <div className="space-y-6">
                         <div className="flex items-center justify-between">
                           <h4 className="text-xl font-bold text-black border-l-4 border-google-green pl-4">Event Gallery</h4>
