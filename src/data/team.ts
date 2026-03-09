@@ -102,9 +102,9 @@ export const teamMembers = [
     linkedin: "https://linkedin.com/in/sathwik-dudipala-0b65b5262",
   },
   {
-    name: "Krishna kireeti gurijala",
+    name: "Krishna Kireeti Gurijala",
     role: "Android Core Team Member",
-    image: "/team/Krishna_Kireeti.jpg",
+    image: "/team/Krishna_Kireeti.jpeg",
     linkedin: "https://linkedin.com/in/krishna-kireeti-gurijala-b146b312b",
   },
   {
