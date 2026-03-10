@@ -1,9 +1,43 @@
 export const nextEvent = {
-  title: "IoT Workshop",
+  title: "AIoT & Embedded Systems Workshop",
   date: "March 16, 2026",
   description: "Hands-on workshop exploring Internet of Things, embedded systems, and real-time device communication.",
 }
 export const allEvents = [
+  {
+    title: "CodeNyx Hackathon",
+    date: "March 28-29, 2026",
+    description: "CodeNyx is a 36-hour hackathon organized by GDG on Campus CVR College of Engineering, where student developers, designers, and innovators come together to build, compete, and create.",
+    image: "https://code-nyx.vercel.app/ss.png",
+    gallery: [],
+    upcoming: true,
+    color: "google-blue",
+    link: "https://code-nyx.tech"
+  },
+  {
+    title: "AIoT & Embedded Systems Workshop",
+    date: "March 16, 2026",
+    description:
+      "Hands-on workshop introducing the fundamentals of Internet of Things and embedded systems.",
+    descriptionLong:
+      "The AIoT & Embedded Systems Workshop is designed to help students understand the fundamentals of Internet of Things, embedded systems, and smart device communication. Participants will get hands-on experience with sensors, microcontrollers, and real-time data processing while building small IoT-based prototypes. This workshop will help students gain practical exposure to how connected devices work in modern smart systems.",
+    image: "/events/iot_workshop.png",
+    gallery: ["/events/iot_workshop.jpeg", "/events/iot_workshop2.jpeg"],
+    upcoming: true,
+    color: "google-green",
+  },
+  {
+    title: "EmbeddedX",
+    date: "March 28, 2026",
+    description:
+      "Showcasing innovative real-world embedded and IoT and Embedded Systems based projects built by students.",
+    descriptionLong:
+      "The EmbeddedX is an exciting event where students showcase innovative projects that combine embedded systems, Internet of Things, and Artificial Intelligence. The expo focuses on solving real-world problems through smart connected devices and intelligent automation. Visitors will explore a wide range of projects demonstrating the power of IoT technology and its applications in areas such as smart homes, healthcare, agriculture, and automation.",
+    image: "/events/embeddedx.jpeg",
+    gallery: ["/events/iot_expo.jpeg", "/events/iot_expo2.jpeg"],
+    upcoming: true,
+    color: "google-red",
+  },
   {
     title: "Mock Placement Drive",
     date: "Feb 20-21, 2026",
@@ -13,31 +47,7 @@ export const allEvents = [
     image: "/events/mock_final.jpeg",
     gallery: ["/events/mock_final.jpeg", "/events/mock_placements.jpeg"],
     upcoming: false,
-    color: "google-blue",
-  },
-  {
-    title: "IoT Workshop",
-    date: "March 16, 2026",
-    description:
-      "Hands-on workshop introducing the fundamentals of Internet of Things and embedded systems.",
-    descriptionLong:
-      "The IoT Workshop is designed to help students understand the fundamentals of Internet of Things, embedded systems, and smart device communication. Participants will get hands-on experience with sensors, microcontrollers, and real-time data processing while building small IoT-based prototypes. This workshop will help students gain practical exposure to how connected devices work in modern smart systems.",
-    image: "/events/iot_workshop.png",
-    gallery: ["/events/iot_workshop.jpeg", "/events/iot_workshop2.jpeg"],
-    upcoming: true,
-    color: "google-green",
-  },
-  {
-    title: "IoT Project Expo",
-    date: "March 28, 2026",
-    description:
-      "Showcasing innovative real-world embedded and IoT-based projects built by students.",
-    descriptionLong:
-      "The IoT Project Expo is an exciting event where students showcase innovative projects that combine embedded systems, Internet of Things, and Artificial Intelligence. The expo focuses on solving real-world problems through smart connected devices and intelligent automation. Visitors will explore a wide range of projects demonstrating the power of IoT technology and its applications in areas such as smart homes, healthcare, agriculture, and automation.",
-    image: "/events/iot_workshop.png",
-    gallery: ["/events/iot_expo.jpeg", "/events/iot_expo2.jpeg"],
-    upcoming: true,
-    color: "google-red",
+    color: "google-yellow",
   },
   {
     title: "Resume Building Session",

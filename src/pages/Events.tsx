@@ -163,7 +163,7 @@ const Events = () => {
                         <div className="flex-1 flex flex-col-reverse md:flex-row bg-white p-6 md:p-8 md:pl-6 relative">
                           <div className="flex-1 flex flex-col justify-between pr-4">
                             <div>
-                              <div className="flex items-center gap-3 mb-3">
+                              <div className="flex items-center gap-3 mb-2">
                                 <span className={`inline-block w-2 h-2 rounded-full ${bgColor}`}></span>
                                 <span className={`text-xs font-bold uppercase tracking-widest ${textColor}`}>
                                   {event.upcoming ? 'Upcoming' : 'Past Event'}
@@ -178,7 +178,7 @@ const Events = () => {
                             </div>
 
                             {/* Footer */}
-                            <div className="mt-auto pt-4 border-t border-black/5 flex items-center justify-between">
+                            <div className="mt-auto pt-2 border-t border-black/5 flex items-center justify-between">
                               <div className="h-8 flex gap-1 opacity-20 group-hover:opacity-10 transition-opacity">
                                 {[...Array(12)].map((_, j) => (
                                   <div key={j} className={`w-${j % 2 === 0 ? '1' : '2'} h-full bg-black`}></div>
@@ -266,7 +266,8 @@ const Events = () => {
                     <div className="space-y-4">
                       <h4 className="text-xl font-bold text-black border-l-4 border-google-blue pl-4">About the Event</h4>
                       <DialogDescription className="text-lg text-neutral-600 leading-relaxed font-medium">
-                        {(selectedEvent as any).descriptionLong || selectedEvent.description}
+                        {(selectedEvent as any).descriptionLong || selectedEvent.description}<br />
+                        {selectedEvent.link && <>For more info, visit <a href="https://code-nyx.tech" className="text-blue-500 hover:underline">CodeNyx</a></>}
                       </DialogDescription>
                     </div>
 
