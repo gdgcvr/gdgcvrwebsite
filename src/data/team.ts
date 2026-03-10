@@ -43,7 +43,7 @@ export const teamMembers = [
   },
   {
     name: "Aka Shreshta",
-    role: "Graphic Design Core Team Lead",
+    role: "Graphic Design Core Team Member",
     image: "/team/Aka_Shresta.jpg",
     linkedin: "https://linkedin.com/in/shreshta-aka/",
   },
