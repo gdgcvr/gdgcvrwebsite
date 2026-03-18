@@ -1,12 +1,12 @@
 export const nextEvent = {
-  title: "AIoT & Embedded Systems Workshop",
-  date: "March 16, 2026",
-  description: "Hands-on workshop exploring Internet of Things, embedded systems, and real-time device communication.",
+  title: "CodeNyx Hackathon",
+  date: "March 30-31, 2026",
+  description: "A 36-hour hackathon organized by GDG on Campus CVR College of Engineering, where student developers, designers, and innovators come together to build, compete, and create.",
 }
 export const allEvents = [
   {
     title: "CodeNyx Hackathon",
-    date: "March 28-29, 2026",
+    date: "March 30-31, 2026",
     description: "CodeNyx is a 36-hour hackathon organized by GDG on Campus CVR College of Engineering, where student developers, designers, and innovators come together to build, compete, and create.",
     image: "https://code-nyx.vercel.app/ss.png",
     gallery: [],
@@ -28,7 +28,7 @@ export const allEvents = [
   },
   {
     title: "EmbeddedX",
-    date: "March 28, 2026",
+    date: "March 31, 2026",
     description:
       "Showcasing innovative real-world embedded and IoT and Embedded Systems based projects built by students.",
     descriptionLong:
