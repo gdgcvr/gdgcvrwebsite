@@ -6,6 +6,7 @@ import { Providers } from "../components/Providers";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { nextEvent } from "@/data/events";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,14 +83,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="q1ZsfoMNVwZ88aBhaGaAdNtM0LF8dY0kRB-9zCUeT70"
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XHDSLTMQ9"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-9XHDSLTMQ9');
-        </script>
+        <GoogleAnalytics gaId="G-9XHDSLTMQ9" />
       </head>
       <body className={`${inter.variable} font-sans`} suppressHydrationWarning>
         <Providers>
