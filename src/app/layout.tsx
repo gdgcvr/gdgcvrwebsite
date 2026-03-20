@@ -82,6 +82,14 @@ export default function RootLayout({
           name="google-site-verification"
           content="q1ZsfoMNVwZ88aBhaGaAdNtM0LF8dY0kRB-9zCUeT70"
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XHDSLTMQ9"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-9XHDSLTMQ9');
+        </script>
       </head>
       <body className={`${inter.variable} font-sans`} suppressHydrationWarning>
         <Providers>
