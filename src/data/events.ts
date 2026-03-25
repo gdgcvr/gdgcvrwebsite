@@ -35,7 +35,7 @@ export const allEvents = [
       "The AIoT & Embedded Systems Workshop is designed to help students understand the fundamentals of Internet of Things, embedded systems, and smart device communication. Participants will get hands-on experience with sensors, microcontrollers, and real-time data processing while building small IoT-based prototypes. This workshop will help students gain practical exposure to how connected devices work in modern smart systems.",
     image: "/events/iot_workshop.png",
     gallery: ["/events/iot_workshop.jpeg", "/events/iot_workshop2.jpeg"],
-    upcoming: true,
+    upcoming: false,
     color: "google-green",
   },
   {
