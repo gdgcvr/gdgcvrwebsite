@@ -22,9 +22,26 @@ const Events = () => {
     (typeof allEvents)[0] | null
   >(null);
 
+  const getEventState = (event: (typeof allEvents)[0]) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const start = new Date(event.startDate);
+    start.setHours(0, 0, 0, 0);
+
+    const end = event.endDate ? new Date(event.endDate) : start;
+    end.setHours(23, 59, 59, 999);
+
+    if (today < start) return "upcoming";
+    if (today > end) return "past";
+    return "ongoing";
+  };
+
   const filtered = allEvents.filter((e) => {
-    if (filter === "upcoming") return e.upcoming;
-    if (filter === "past") return !e.upcoming;
+    const state = getEventState(e as any);
+    if (filter === "upcoming")
+      return state === "upcoming" || state === "ongoing";
+    if (filter === "past") return state === "past";
     return true;
   });
 
@@ -195,7 +212,12 @@ const Events = () => {
                                 <span
                                   className={`text-xs font-bold uppercase tracking-widest ${textColor}`}
                                 >
-                                  {event.upcoming ? "Upcoming" : "Past Event"}
+                                  {(() => {
+                                    const state = getEventState(event as any);
+                                    if (state === "upcoming") return "Upcoming";
+                                    if (state === "ongoing") return "Ongoing";
+                                    return "Past Event";
+                                  })()}
                                 </span>
                               </div>
                               <h3
@@ -298,7 +320,12 @@ const Events = () => {
                       <span
                         className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-white text-black`}
                       >
-                        {selectedEvent.upcoming ? "Upcoming" : "Past Event"}
+                        {(() => {
+                          const state = getEventState(selectedEvent as any);
+                          if (state === "upcoming") return "Upcoming";
+                          if (state === "ongoing") return "Ongoing";
+                          return "Past Event";
+                        })()}
                       </span>
                       <time className="text-sm font-bold opacity-80">
                         {selectedEvent.date}
@@ -337,7 +364,7 @@ const Events = () => {
                     </div>
 
                     {/* Gallery Section */}
-                    {!selectedEvent.upcoming &&
+                    {getEventState(selectedEvent as any) === "past" &&
                       (selectedEvent as any).gallery &&
                       (selectedEvent as any).gallery.length > 0 && (
                         <div className="space-y-6">
@@ -377,7 +404,7 @@ const Events = () => {
                       )}
 
                     {/* Footer / Call to Action */}
-                    {selectedEvent.upcoming && (
+                    {getEventState(selectedEvent as any) !== "past" && (
                       <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-100 flex flex-col items-center justify-center text-center gap-4">
                         <div>
                           <h5 className="font-bold text-lg mb-1">
