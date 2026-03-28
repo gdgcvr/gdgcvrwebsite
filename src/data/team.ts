@@ -60,6 +60,12 @@ export const teamMembers = [
     linkedin: "https://linkedin.com/in/vijay-amaresh-6853aa291",
   },
   {
+    name: "K. Srivalli",
+    role: "IoT and Embedded Systems Core Team Member",
+    image: "/team/srivalli.jpeg",
+    linkedin: "https://linkedin.com/in/srivalli-kunta-5a8110291",
+  },
+  {
     name: "Nanda Nagulavancha",
     role: "CP Core Team Member",
     image: "/team/Nanda_Nagulavancha.jpg",
