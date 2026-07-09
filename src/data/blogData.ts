@@ -10,6 +10,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "introduction-to-load-balancers",
+    title: "Introduction to Load Balancers",
+    author: "Eswar Dudi",
+    date: "July 10, 2026",
+    readTime: "10 min read",
+    topic: "Backend and Cloud",
+    color: "google-green",
+  },
+  {
     id: "simple-linear-regression",
     title: "Simple Linear Regression",
     author: "Srimanth Tenneti",
