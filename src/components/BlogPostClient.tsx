@@ -1,36 +1,23 @@
 "use client";
 
+import { useRef } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 import AnimatedSection from "@/components/AnimatedSection";
-import {
-  DoodleCircle,
-  DoodleCross,
-  DoodleLine,
-} from "@/components/DoodleAccents";
 import { BlogPost } from "@/data/blogData";
 
 interface BlogPostClientProps {
   post: BlogPost;
+  content: string;
 }
 
-const BlogPostClient = ({ post }: BlogPostClientProps) => {
-  const doodleMap = {
-    "google-blue": (
-      <DoodleLine className="w-full h-full text-google-blue opacity-20" />
-    ),
-    "google-red": (
-      <DoodleCircle className="w-full h-full text-google-red opacity-20" />
-    ),
-    "google-green": (
-      <DoodleCross className="w-full h-full text-google-green opacity-20" />
-    ),
-    "google-yellow": (
-      <DoodleCircle className="w-full h-full text-google-yellow opacity-20" />
-    ),
-  };
-
+const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
+  const imageCount = useRef(0);
   return (
     <>
       <section className="section-padding relative min-h-screen">
@@ -46,36 +33,27 @@ const BlogPostClient = ({ post }: BlogPostClientProps) => {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Left Column - Visuals */}
-            <div className="lg:col-span-4 lg:sticky lg:top-24 h-fit">
+            {/* Metadata */}
+            <div className="lg:col-span-3 lg:sticky lg:top-24 h-fit">
               <AnimatedSection delay={0.1}>
-                <div
-                  className={`aspect-square relative rounded-2xl overflow-hidden bg-secondary/30 flex items-center justify-center ${post.image ? "p-0" : "p-12"} border-2 border-${post.color}/20`}
-                >
-                  {post.image ? (
-                    <Image
-                      src={post.image}
-                      loading="eager"
-                      alt={`Cover image for ${post.title}`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-contain p-4 transition-transform duration-500 hover:scale-105"
+                <div className="rounded-2xl border border-border/60 bg-secondary/30 backdrop-blur-sm p-6 space-y-5">
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full bg-${post.color}`}
                     />
-                  ) : (
-                    doodleMap[post.color]
-                  )}
-                </div>
-                <div className="mt-6 space-y-4">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full bg-${post.color}`} />
-                    <span className="text-sm font-medium">{post.topic}</span>
+                    <span className="text-sm font-semibold tracking-wide uppercase">
+                      {post.topic}
+                    </span>
                   </div>
+                  <hr className="border-border/40" />
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Written by</p>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground/70">
+                      Written by
+                    </p>
                     <p className="font-medium">{post.author}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground/70">
                       Published on
                     </p>
                     <p className="font-medium">
@@ -83,20 +61,53 @@ const BlogPostClient = ({ post }: BlogPostClientProps) => {
                     </p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Read time</p>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground/70">
+                      Read time
+                    </p>
                     <p className="font-medium">{post.readTime}</p>
                   </div>
                 </div>
               </AnimatedSection>
             </div>
 
-            <article className="lg:col-span-8">
+            <article className="lg:col-span-9">
               <AnimatedSection delay={0.2}>
                 <h1 className="heading-lg mb-6">{post.title}</h1>
-                <div
-                  className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+                <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeSlug]}
+                    components={{
+                      img: ({ src, alt }) => {
+                        const isFirst = imageCount.current === 0;
+                        imageCount.current++;
+                        return (
+                          <span className="block relative w-full aspect-video my-8 rounded-xl overflow-hidden">
+                            <Image
+                              src={src as string}
+                              alt={alt || ""}
+                              fill
+                              className="object-contain"
+                              {...(isFirst ? { priority: true, loading: "eager" } : {})}
+                            />
+                          </span>
+                        );
+                      },
+                      h2: ({ children }) => (
+                        <h2 className="text-2xl font-semibold mt-10 mb-4 text-foreground">
+                          {children}
+                        </h2>
+                      ),
+                      p: ({ children }) => (
+                        <p className="mb-6 leading-relaxed">
+                          {children}
+                        </p>
+                      ),
+                    }}
+                  >
+                    {content}
+                  </ReactMarkdown>
+                </div>
               </AnimatedSection>
             </article>
           </div>

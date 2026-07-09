@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/data/blogData";
+import { getPostContent } from "@/data/blogContent";
 import BlogPostClient from "@/components/BlogPostClient";
 
 export async function generateStaticParams() {
@@ -20,5 +21,7 @@ export default async function BlogPost({
     return notFound();
   }
 
-  return <BlogPostClient post={post} />;
+  const content = await getPostContent(post.id);
+
+  return <BlogPostClient post={post} content={content} />;
 }
