@@ -8,6 +8,8 @@ import { ArrowLeft, Copy, Check } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import AnimatedSection from "@/components/AnimatedSection";
 import { BlogPost } from "@/data/blogData";
 
@@ -16,31 +18,32 @@ interface BlogPostClientProps {
   content: string;
 }
 
-const CodeBlock = ({ children }: { children: any }) => {
+const CodeBlock = ({ code, language }: { code: string; language: string }) => {
   const [isCopied, setIsCopied] = useState(false);
-  const textRef = useRef<HTMLPreElement>(null);
 
   const handleCopy = () => {
-    if (textRef.current) {
-      const text = textRef.current.innerText;
-      navigator.clipboard.writeText(text);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
-    }
+    navigator.clipboard.writeText(code);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   return (
-    <div className="relative group my-6">
+    <div className="relative group my-6 rounded-xl overflow-hidden bg-[#1E1E1E]">
       <button
         onClick={handleCopy}
-        className="absolute right-3 top-3 p-2 rounded-lg bg-background/50 hover:bg-background/80 text-muted-foreground hover:text-foreground transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-border/50"
+        className="absolute right-3 top-3 p-2 rounded-lg bg-background/20 hover:bg-background/40 text-muted-foreground hover:text-white transition-all opacity-0 group-hover:opacity-100 backdrop-blur-md border border-white/10 z-10"
         aria-label="Copy code"
       >
         {isCopied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
       </button>
-      <pre ref={textRef} className="font-bold bg-muted p-4 rounded-xl overflow-x-auto text-sm m-0">
-        {children}
-      </pre>
+      <SyntaxHighlighter
+        language={language}
+        style={vscDarkPlus}
+        PreTag="div"
+        customStyle={{ margin: 0, padding: "1.5rem 1rem", background: "transparent", fontSize: "0.875rem" }}
+      >
+        {code}
+      </SyntaxHighlighter>
     </div>
   );
 };
@@ -147,12 +150,30 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
                           {children}
                         </a>
                       ),
-                      code: ({ children }) => (
-                        <code className="font-bold bg-muted px-1.5 py-0.5 rounded-md text-sm">
-                          {children}
-                        </code>
-                      ),
-                      pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+                      code: ({ className, children, node, ...props }) => {
+                        const match = /language-(\w+)/.exec(className || "");
+                        const codeContent = String(children).replace(/\n$/, "");
+                        const hasNewline = String(children).includes("\n");
+
+                        if (match || hasNewline) {
+                          return (
+                            <CodeBlock
+                              code={codeContent}
+                              language={match?.[1] || "text"}
+                            />
+                          );
+                        }
+
+                        return (
+                          <code
+                            className="font-bold bg-muted px-1.5 py-0.5 rounded-md text-sm"
+                            {...props}
+                          >
+                            {children}
+                          </code>
+                        );
+                      },
+                      pre: ({ children }) => <>{children}</>,
                     }}
                   >
                     {content}
