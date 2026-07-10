@@ -55,58 +55,43 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
     <>
       <section className="section-padding relative min-h-screen">
         <div className="container px-4 md:px-6">
-          <AnimatedSection>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-8"
-            >
-              <ArrowLeft size={16} />
-              Back to Blogs
-            </Link>
-          </AnimatedSection>
+          <div className="max-w-3xl mx-auto">
+            <AnimatedSection>
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-8 md:mb-12"
+              >
+                <ArrowLeft size={16} />
+                Back to Blogs
+              </Link>
+            </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Metadata */}
-            <div className="lg:col-span-3 lg:sticky lg:top-24 h-fit">
-              <AnimatedSection delay={0.1}>
-                <div className="rounded-2xl border border-border/60 bg-secondary/30 backdrop-blur-sm p-6 space-y-5">
-                  <div className="flex items-center gap-2.5">
-                    <span
-                      className={`w-2.5 h-2.5 rounded-full bg-${post.color}`}
-                    />
-                    <span className="text-sm font-semibold tracking-wide uppercase">
+            <AnimatedSection delay={0.1}>
+              <div className="mb-10 space-y-6">
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
+                  {post.title}
+                </h1>
+                
+                <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground border-b border-border/40 pb-8">
+                  <div className="flex items-center gap-2">
+                    <span className={`w-2.5 h-2.5 rounded-full bg-${post.color}`} />
+                    <span className="font-semibold text-foreground uppercase tracking-wider text-xs">
                       {post.topic}
                     </span>
                   </div>
-                  <hr className="border-border/40" />
-                  <div className="space-y-1">
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground/70">
-                      Written by
-                    </p>
-                    <p className="font-medium">{post.author}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground/70">
-                      Published on
-                    </p>
-                    <p className="font-medium">
-                      <time>{post.date}</time>
-                    </p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground/70">
-                      Read time
-                    </p>
-                    <p className="font-medium">{post.readTime}</p>
-                  </div>
+                  <span className="text-border">•</span>
+                  <span className="font-medium text-foreground">{post.author}</span>
+                  <span className="text-border">•</span>
+                  <time>{post.date}</time>
+                  <span className="text-border">•</span>
+                  <span>{post.readTime}</span>
                 </div>
-              </AnimatedSection>
-            </div>
+              </div>
+            </AnimatedSection>
 
-            <article className="lg:col-span-9">
+            <article>
               <AnimatedSection delay={0.2}>
-                <h1 className="heading-lg mb-6">{post.title}</h1>
-                <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground">
+                <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-none text-muted-foreground">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeSlug]}
@@ -114,39 +99,38 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
                       img: ({ src, alt }) => {
                         const isFirst = src === firstImageUrl;
                         return (
-                          <span className="block relative w-full aspect-video my-8 rounded-xl overflow-hidden">
-                            <Image
+                          <span className="flex justify-center w-full my-10">
+                            <img
                               src={src as string}
                               alt={alt || ""}
-                              fill
-                              className="object-contain"
-                              {...(isFirst ? { priority: true, loading: "eager" } : {})}
+                              className="max-w-full h-auto rounded-xl border border-border/40"
+                              {...(isFirst ? { fetchPriority: "high" } : { loading: "lazy" })}
                             />
                           </span>
                         );
                       },
                       h2: ({ children }) => (
-                        <h2 className="text-2xl font-semibold mt-10 mb-4 text-foreground">
+                        <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground tracking-tight">
                           {children}
                         </h2>
                       ),
                       h3: ({ children }) => (
-                        <h3 className="text-xl font-semibold mt-8 mb-3 text-foreground">
+                        <h3 className="text-2xl font-semibold mt-10 mb-4 text-foreground tracking-tight">
                           {children}
                         </h3>
                       ),
                       p: ({ children }) => (
-                        <p className="mb-6 leading-relaxed">
+                        <p className="mb-8 leading-relaxed text-[1.125rem] md:text-[1.25rem] text-foreground/90 font-serif">
                           {children}
                         </p>
                       ),
                       ul: ({ children }) => (
-                        <ul className="list-disc ml-6 mb-6 space-y-2 text-muted-foreground">
+                        <ul className="list-disc ml-6 mb-8 space-y-3 text-[1.125rem] md:text-[1.25rem] text-foreground/90 font-serif">
                           {children}
                         </ul>
                       ),
                       ol: ({ children }) => (
-                        <ol className="list-decimal ml-6 mb-6 space-y-2 text-muted-foreground">
+                        <ol className="list-decimal ml-6 mb-8 space-y-3 text-[1.125rem] md:text-[1.25rem] text-foreground/90 font-serif">
                           {children}
                         </ol>
                       ),
@@ -158,7 +142,7 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
                       a: ({ href, children }) => (
                         <a
                           href={href}
-                          className="text-google-blue hover:underline font-medium"
+                          className="text-foreground underline decoration-border hover:decoration-foreground underline-offset-4 transition-colors font-medium"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -181,7 +165,7 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
 
                         return (
                           <code
-                            className="font-bold bg-muted px-1.5 py-0.5 rounded-md text-sm"
+                            className="font-bold bg-muted/50 px-1.5 py-0.5 rounded-md text-[0.9em]"
                             {...props}
                           >
                             {children}
