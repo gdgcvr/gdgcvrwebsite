@@ -65,7 +65,11 @@ At this stage, this is just a simple Express.js web server, not a load balancer.
 To begin, let's create a list of backend server addresses. We'll use `["http://localhost:3001", "http://localhost:3002", "http://localhost:3003"]` as our servers and maintain a pointer `idx`, initially set to `0`, to cycle through them one by one. This algorithm is called as the **Round-Robin algorithm**.
 
 ```javascript
-const servers = ["http://localhost:3001", "http://localhost:3002", "http://localhost:3003"];
+const servers = [
+  "http://localhost:3001",
+  "http://localhost:3002",
+  "http://localhost:3003"
+];
 let idx = 0;
 ```
 
@@ -86,7 +90,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const servers = ["http://localhost:3001", "http://localhost:3002", "http://localhost:3003"];
+const servers = [
+  "http://localhost:3001",
+  "http://localhost:3002",
+  "http://localhost:3003"
+];
 let idx = 0;
 
 app.get("/", async (req, res) => {

@@ -49,6 +49,8 @@ const CodeBlock = ({ code, language }: { code: string; language: string }) => {
         language={language}
         style={vscDarkPlus}
         PreTag="div"
+        className="font-mono"
+        codeTagProps={{ className: "font-mono" }}
         customStyle={{ margin: 0, padding: "1.5rem", background: "transparent", fontSize: "0.9rem", lineHeight: "1.6" }}
       >
         {code}
@@ -203,7 +205,7 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
 
                         return (
                           <code
-                            className="font-bold bg-muted/50 px-1.5 py-0.5 rounded-md text-[0.9em]"
+                            className="font-mono font-bold bg-muted/50 px-1.5 py-0.5 rounded-md text-[0.9em]"
                             {...props}
                           >
                             {children}
