@@ -53,7 +53,7 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
   const firstImageUrl = firstImageMatch ? firstImageMatch[1] : null;
   return (
     <>
-      <section className="section-padding relative min-h-screen">
+      <section className="section-padding relative min-h-screen font-manrope">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto">
             <AnimatedSection>
@@ -80,7 +80,18 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
                     </span>
                   </div>
                   <span className="text-border">•</span>
-                  <span className="font-medium text-foreground">{post.author}</span>
+                  {post.authorLink ? (
+                    <a
+                      href={post.authorLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-foreground hover:text-google-blue hover:underline transition-colors"
+                    >
+                      {post.author}
+                    </a>
+                  ) : (
+                    <span className="font-medium text-foreground">{post.author}</span>
+                  )}
                   <span className="text-border">•</span>
                   <time>{post.date}</time>
                   <span className="text-border">•</span>

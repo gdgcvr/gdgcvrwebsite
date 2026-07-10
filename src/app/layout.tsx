@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "../index.css";
 import InitialLoader from "../components/InitialLoader/InitialLoader";
 import { Providers } from "../components/Providers";
@@ -12,6 +12,12 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -85,7 +91,7 @@ export default function RootLayout({
         />
         <GoogleAnalytics gaId="G-9XHDSLTMQ9" />
       </head>
-      <body className={`${inter.variable} font-sans`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${manrope.variable} font-sans`} suppressHydrationWarning>
         <Providers>
           <InitialLoader />
           <div className="min-h-screen flex flex-col">

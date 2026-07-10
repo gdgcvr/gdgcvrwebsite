@@ -1,4 +1,4 @@
-import { blogPosts } from "@/data/blogData";
+import { blogPosts, blogTeams } from "@/data/blogData";
 import { getPostExcerpt } from "@/data/blogContent";
 import BlogListClient from "@/components/BlogListClient";
 
@@ -10,5 +10,5 @@ export default async function Blog() {
     })),
   );
 
-  return <BlogListClient posts={posts} />;
+  return <BlogListClient posts={posts} teams={blogTeams} />;
 }

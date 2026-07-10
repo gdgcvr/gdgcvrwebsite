@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,20 +17,43 @@ const navLinks = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
+    setHidden(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setHidden(false);
+      }
+      
+      setScrolled(currentScrollY > 20);
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isBlogPost = pathname.startsWith("/blog/") && pathname !== "/blog";
+  const shouldHide = hidden && isBlogPost;
 
   return (
     <>
       <nav
-        className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] max-w-5xl transition-all duration-300 ${
+        className={`fixed left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] max-w-5xl transition-all duration-300 ${
+          shouldHide ? "-top-24 opacity-0 pointer-events-none" : "top-5 opacity-100"
+        } ${
           scrolled
             ? "bg-white/95 backdrop-blur-xl border-black/5 shadow-[0_6px_0_0_rgba(0,0,0,0.08)] py-3"
             : "bg-white/80 backdrop-blur-md border-black/5 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] py-4"
