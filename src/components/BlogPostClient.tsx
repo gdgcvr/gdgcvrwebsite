@@ -131,7 +131,7 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
 
             <article>
               <AnimatedSection delay={0.2}>
-                <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-none text-muted-foreground">
+                <div className="prose dark:prose-invert max-w-none text-muted-foreground">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeSlug]}
@@ -150,27 +150,27 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
                         );
                       },
                       h2: ({ children }) => (
-                        <h2 className="text-3xl font-bold mt-14 mb-6 text-foreground tracking-tight border-b border-border/40 pb-4">
+                        <h2 className="text-2xl font-bold mt-8 mb-4 text-foreground tracking-tight border-b border-border/40 pb-2">
                           {children}
                         </h2>
                       ),
                       h3: ({ children }) => (
-                        <h3 className="text-2xl font-semibold mt-10 mb-4 text-foreground tracking-tight">
+                        <h3 className="text-xl font-semibold mt-6 mb-3 text-foreground tracking-tight">
                           {children}
                         </h3>
                       ),
                       p: ({ children }) => (
-                        <p className="mb-8 text-[1.125rem] md:text-[1.2rem] leading-[1.9] text-foreground/90">
+                        <p className="mb-4 text-base leading-relaxed text-foreground/90">
                           {children}
                         </p>
                       ),
                       ul: ({ children }) => (
-                        <ul className="list-disc ml-6 mb-8 space-y-2 text-[1.125rem] md:text-[1.2rem] leading-[1.9] text-foreground/90">
+                        <ul className="list-disc ml-6 mb-4 space-y-1 text-base leading-relaxed text-foreground/90">
                           {children}
                         </ul>
                       ),
                       ol: ({ children }) => (
-                        <ol className="list-decimal ml-6 mb-8 space-y-2 text-[1.125rem] md:text-[1.2rem] leading-[1.9] text-foreground/90">
+                        <ol className="list-decimal ml-6 mb-4 space-y-1 text-base leading-relaxed text-foreground/90">
                           {children}
                         </ol>
                       ),
