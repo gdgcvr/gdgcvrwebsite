@@ -6,10 +6,16 @@ import Link from "next/link";
 import { ArrowLeft, PenLine } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { BlogPost } from "@/data/blogData";
-
 interface BlogPostClientProps {
-  post: BlogPost;
+  post: {
+    title: string;
+    topic: string;
+    author: string;
+    authorLink?: string;
+    date: string;
+    readTime: string;
+    color: string;
+  };
   content: string;
 }
 
@@ -85,21 +91,6 @@ const BlogPostClient = ({ post, content }: BlogPostClientProps) => {
                 <MarkdownRenderer content={content} />
               </AnimatedSection>
             </article>
-
-            <AnimatedSection delay={0.3}>
-              <div className="mt-16 pt-10 border-t border-border/40 flex items-center justify-between">
-                <p className="text-muted-foreground text-sm">
-                  Want to share your knowledge?
-                </p>
-                <Link
-                  href="/blog/request"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-medium hover:opacity-90 transition-all shadow-lift hover:shadow-lift-lg"
-                >
-                  <PenLine size={14} />
-                  Request a Blog
-                </Link>
-              </div>
-            </AnimatedSection>
           </div>
         </div>
       </section>

@@ -51,7 +51,7 @@ const BlogListClient = ({
   );
 
   // Group blogs into their teams, using "Other" for null teams
-  const availableTeams: string[] = [...teams, "Other"];
+  const availableTeams: string[] = Array.from(new Set([...teams, "Other"]));
   
   // Only show teams that actually have posts
   const activeTeams = availableTeams.filter((team) =>
@@ -91,13 +91,6 @@ const BlogListClient = ({
               Blogs are written by our student community to share the technical
               and non technical knowledge.
             </p>
-            <Link
-              href="/blog/request"
-              className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl bg-foreground text-background text-sm font-medium hover:opacity-90 transition-all shadow-lift hover:shadow-lift-lg"
-            >
-              <PenLine size={16} />
-              Request a Blog
-            </Link>
           </AnimatedSection>
 
           {/* Team Filter Pills */}
