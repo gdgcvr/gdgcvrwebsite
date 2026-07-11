@@ -1,8 +1,13 @@
 import { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blogData";
+import { getPublishedPosts } from "@/lib/notion";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://gdg.cvr.ac.in";
+
+  const posts = await getPublishedPosts().catch((err) => {
+    console.error("Failed to fetch posts for sitemap:", err);
+    return [];
+  });
 
   // Static routes
   const staticRoutes = ["", "/team", "/events", "/blog"].map((route) => ({
@@ -13,9 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Dynamic blog routes
-  const blogRoutes = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.id}`,
-    lastModified: new Date(), // Ideally this would be the post update date
+  const blogRoutes = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));

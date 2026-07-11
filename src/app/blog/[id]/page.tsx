@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/data/blogData";
-import { getPostContent } from "@/data/blogContent";
+import { getPublishedPosts, getPostMarkdown } from "@/lib/notion";
 import BlogPostClient from "@/components/BlogPostClient";
+
+export const revalidate = 60; // ISR 60 seconds
 
 export async function generateMetadata({
   params,
@@ -10,7 +11,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const post = blogPosts.find((p) => p.id === id);
+  const posts = await getPublishedPosts();
+  const post = posts.find((p) => p.slug === id);
 
   if (!post) {
     return {
@@ -24,10 +26,19 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    id: post.id,
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({
+    id: post.slug,
   }));
 }
+
+const getTeamColor = (team: string): string => {
+  if (team === "Web" || team === "Android") return "google-blue";
+  if (team === "AIML") return "google-red";
+  if (team === "Cyber" || team === "CP") return "google-green";
+  if (team === "IoT & Embedded") return "google-yellow";
+  return "google-yellow";
+};
 
 export default async function BlogPost({
   params,
@@ -35,13 +46,27 @@ export default async function BlogPost({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const post = blogPosts.find((p) => p.id === id);
+  const posts = await getPublishedPosts();
+  const post = posts.find((p) => p.slug === id);
 
   if (!post) {
     return notFound();
   }
 
-  const content = await getPostContent(post.id);
+  const content = await getPostMarkdown(post.id, post.slug);
 
-  return <BlogPostClient post={post} content={content} />;
+  const postTeam = post.team || "Other";
+  const formattedPost = {
+    id: post.slug,
+    title: post.title,
+    author: post.author,
+    authorLink: post.authorLink,
+    date: post.date,
+    readTime: post.readTime || "5 min read",
+    topic: post.topic || "General",
+    team: postTeam,
+    color: getTeamColor(postTeam)
+  };
+
+  return <BlogPostClient post={formattedPost as any} content={content} />;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { Copy, Check } from "lucide-react";
 import ReactMarkdown from "react-markdown";
@@ -77,13 +78,18 @@ const MarkdownRenderer = ({ content, className = "" }: MarkdownRendererProps) =>
           img: ({ src, alt }) => {
             if (!src) return null;
             const isFirst = src === firstImageUrl;
+            const isBlobOrData = src.startsWith("blob:") || src.startsWith("data:");
             return (
               <span className="flex justify-center w-full my-10">
-                <img
+                <Image
                   src={src}
                   alt={alt || ""}
-                  className="max-w-full h-auto rounded-xl border border-border/40"
-                  {...(isFirst ? { fetchPriority: "high" } : { loading: "lazy" })}
+                  width={1200}
+                  height={800}
+                  style={{ width: "100%", height: "auto" }}
+                  className="rounded-xl border border-border/40"
+                  priority={isFirst}
+                  unoptimized={isBlobOrData}
                 />
               </span>
             );
