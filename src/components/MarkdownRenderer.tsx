@@ -79,6 +79,7 @@ const MarkdownRenderer = ({ content, className = "" }: MarkdownRendererProps) =>
             if (!src) return null;
             const isFirst = src === firstImageUrl;
             const isBlobOrData = src.startsWith("blob:") || src.startsWith("data:");
+            const isProxyImage = src.startsWith("/api/notion-image");
             return (
               <span className="flex justify-center w-full my-10">
                 <Image
@@ -89,7 +90,7 @@ const MarkdownRenderer = ({ content, className = "" }: MarkdownRendererProps) =>
                   style={{ width: "100%", height: "auto" }}
                   className="rounded-xl border border-border/40"
                   priority={isFirst}
-                  unoptimized={isBlobOrData}
+                  unoptimized={isBlobOrData || isProxyImage}
                 />
               </span>
             );

@@ -45,7 +45,7 @@ export async function getPublishedPosts(): Promise<BlogPost[]> {
     // Extract properties safely
     const title = page.properties.Title?.title?.[0]?.plain_text || "Untitled";
     const slug = page.properties.Slug?.rich_text?.[0]?.plain_text || page.id;
-    
+
     // Author can be a rich_text or a person relation, assuming rich_text or select for simplicity
     let author = "Anonymous";
     if (page.properties.Author?.rich_text?.[0]?.plain_text) {
@@ -100,7 +100,25 @@ export async function getPublishedPosts(): Promise<BlogPost[]> {
   });
 }
 
-export async function getPostMarkdown(pageId: string, slug: string): Promise<string> {
+export async function getPostMarkdown(
+  pageId: string,
+  slug: string,
+): Promise<string> {
+  n2m.setCustomTransformer("image", async (block: any) => {
+    const blockId = block.id;
+    const imageBlock = block.image;
+
+    const caption =
+      imageBlock?.caption?.map((item: any) => item.plain_text).join("") ||
+      "image";
+
+    if (imageBlock?.type === "external") {
+      return `![${caption}](${imageBlock.external.url})`;
+    }
+
+    return `![${caption}](/api/notion-image?blockId=${blockId})`;
+  });
+
   const mdblocks = await n2m.pageToMarkdown(pageId);
   const mdString = n2m.toMarkdownString(mdblocks);
   return mdString.parent || "";

@@ -25,12 +25,7 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const posts = await getPublishedPosts();
-  return posts.map((post) => ({
-    id: post.slug,
-  }));
-}
+export const dynamicParams = true;
 
 const getTeamColor = (team: string): string => {
   if (team === "Web" || team === "Android") return "google-blue";
