@@ -4,6 +4,8 @@ import { NotionToMarkdown } from "notion-to-md";
 // Initialize Notion Client
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
+  fetch: (url: string, init?: RequestInit) =>
+    fetch(url, { ...init, next: { revalidate: 60 } } as RequestInit),
 });
 
 // Initialize NotionToMarkdown
