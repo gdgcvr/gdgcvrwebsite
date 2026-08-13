@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Zap, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { latestEvent } from "@/data/events";
+import { REGISTER_URL } from "@/constants/links";
 
 const Hero = () => {
   const [eventLabel, setEventLabel] = useState("Next Event");
@@ -47,13 +48,13 @@ const Hero = () => {
       </div>
 
       {/* The Grid Container - Constrained & Aligned (Glass Effect on Cells) */}
-      <div className="relative z-10 w-full max-w-[1400px] h-full grid grid-cols-1 md:grid-cols-12 grid-rows-[auto_auto_auto] md:grid-rows-2 gap-4 md:gap-6">
+      <div className="relative z-10 w-full max-w-[1400px] h-full grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
         {/* 1. Main Title Block (Dominant) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="col-span-1 md:col-span-8 row-span-1 md:row-span-2 bg-neutral-50 rounded-[2rem] p-8 md:p-12 border border-neutral-100 relative overflow-hidden group flex flex-col justify-between"
+          className="col-span-1 lg:col-span-8 lg:row-span-2 bg-neutral-50 rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-12 border border-neutral-100 relative overflow-hidden group flex flex-col justify-between min-h-[380px] md:min-h-[460px] lg:min-h-0"
         >
           {/* Background Texture */}
           <div
@@ -74,7 +75,7 @@ const Hero = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl md:text-[5rem] lg:text-[7rem] font-bold leading-[0.9] tracking-tight text-neutral-900"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[6.5rem] xl:text-[7rem] font-bold leading-[0.9] tracking-tight text-neutral-900"
             >
               WHERE <br />
               CAMPUS <br />
@@ -87,7 +88,7 @@ const Hero = () => {
                 GOOGLE
               </motion.span>
             </motion.h1>
-            <p className="mt-6 text-neutral-500 font-medium max-w-md text-lg">
+            <p className="mt-6 text-neutral-500 font-medium max-w-md text-base sm:text-lg">
               The bridge between theory and impact.{" "}
               <a
                 href="https://cvr.ac.in/home4/"
@@ -103,51 +104,54 @@ const Hero = () => {
         </motion.div>
 
         {/* 2. The Interactive Component Stack (Right Column) */}
-        <div className="col-span-1 md:col-span-4 row-span-1 md:row-span-2 flex flex-col gap-4 md:gap-6">
-          {/* 2a. Live Terminal (The "Code" Element) */}
+        <div className="col-span-1 lg:col-span-4 lg:row-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6">
+          {/* 2a. Recruitment / Register Card */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="flex-1 bg-neutral-900 rounded-[2rem] p-6 relative overflow-hidden group min-h-[200px]"
-            aria-labelledby="hero-code-label"
-            role="img"
+            className="md:col-span-1 lg:col-span-1 bg-neutral-900 rounded-[2rem] p-6 relative overflow-hidden group min-h-[200px] flex flex-col justify-between border border-neutral-800"
           >
-            <span id="hero-code-label" className="sr-only">
-              Code snippet illustration showing a future build process
-            </span>
-            {/* Traffic Lights */}
-            <div className="flex gap-2 mb-4" aria-hidden="true">
-              <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-            </div>
-            {/* Code Content */}
+            {/* Subtle glow background */}
             <div
-              className="font-mono text-xs md:text-sm text-neutral-400 space-y-1"
+              className="absolute -top-10 -right-10 w-32 h-32 bg-google-green/10 rounded-full blur-2xl pointer-events-none group-hover:bg-google-green/20 transition-colors"
               aria-hidden="true"
-            >
-              <p>
-                <span className="text-purple-400">const</span>{" "}
-                <span className="text-blue-400">future</span> ={" "}
-                <span className="text-yellow-400">init</span>();
-              </p>
-              <p>
-                <span className="text-purple-400">await</span> future.
-                <span className="text-green-400">build</span>();
-              </p>
-              <div className="flex items-center gap-2 mt-4 text-white">
-                <span className="text-green-500">➜</span>
-                <span className="animate-pulse">_</span>
-              </div>
+            />
+
+            {/* Header: Live status indicator */}
+            <div className="flex items-center gap-2 relative z-10">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90">
+                We're Recruiting
+              </span>
             </div>
-            <div
-              className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-hidden="true"
-            >
-              <div className="px-3 py-1 bg-white/10 rounded-full text-xs text-white backdrop-blur-md">
-                Start Building
-              </div>
+
+            {/* Main Text Content */}
+            <div className="relative z-10 my-3">
+              <h2 className="text-xl font-bold text-neutral-100 tracking-tight leading-snug">
+                Register for 2026-27 batch
+              </h2>
+              <p className="mt-1.5 text-neutral-400 text-xs md:text-sm leading-relaxed">
+                Passionate about building, learning, and tech? Register now to join GDG on Campus CVR College of Engineering.
+              </p>
+            </div>
+
+            {/* Action Button */}
+            <div className="relative z-10 pt-1">
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between w-full bg-white/10 hover:bg-white/15 text-neutral-100 border border-white/15 px-4 py-2.5 rounded-xl font-medium text-xs md:text-sm transition-all duration-200 group/btn backdrop-blur-sm shadow-sm"
+              >
+                <span className="text-neutral-200 group-hover/btn:text-white font-medium">
+                  Register Here
+                </span>
+                <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200" />
+              </a>
             </div>
           </motion.div>
 
@@ -156,7 +160,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="flex-1 bg-google-blue border border-google-blue rounded-[2rem] p-6 relative overflow-hidden group shadow-lg shadow-google-blue/20 min-h-[180px]"
+            className="md:col-span-1 lg:col-span-1 bg-google-blue border border-google-blue rounded-[2rem] p-6 relative overflow-hidden group shadow-lg shadow-google-blue/20 min-h-[180px] flex flex-col justify-between"
             role="region"
             aria-label={eventLabel}
           >
@@ -188,7 +192,7 @@ const Hero = () => {
           </motion.article>
 
           {/* 2c. Community & Join (Split) */}
-          <div className="flex gap-4 md:gap-6 flex-1 min-h-[140px]">
+          <div className="md:col-span-2 lg:col-span-1 flex gap-4 md:gap-6 min-h-[130px]">
             {/* Community */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
