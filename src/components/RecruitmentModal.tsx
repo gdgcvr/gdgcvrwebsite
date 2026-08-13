@@ -10,12 +10,12 @@ const highlights = [
   {
     icon: Code,
     title: "Build & Learn",
-    description: "Hands-on workshops with cutting-edge Google technologies",
+    description: "Hands-on workshops with cutting-edge technologies",
   },
   {
     icon: Users,
     title: "Community",
-    description: "Connect with 200+ passionate developers on campus",
+    description: "Connect with passionate developers on campus",
   },
   {
     icon: Rocket,
