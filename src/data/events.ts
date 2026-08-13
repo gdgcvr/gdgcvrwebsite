@@ -9,6 +9,7 @@ export const latestEvent = {
 
 export const allEvents = [
   {
+    id: "codenyx-hackathon",
     title: "CodeNyx Hackathon",
     date: "March 30-31, 2026",
     startDate: "2026-03-30",
@@ -31,6 +32,7 @@ export const allEvents = [
     link: "https://code-nyx.tech",
   },
   {
+    id: "embeddedx",
     title: "EmbeddedX",
     date: "March 31, 2026",
     startDate: "2026-03-31",
@@ -53,6 +55,7 @@ export const allEvents = [
     color: "google-red",
   },
   {
+    id: "aiot-embedded-workshop",
     title: "AIoT & Embedded Systems Workshop",
     date: "March 16, 2026",
     startDate: "2026-03-16",
@@ -65,6 +68,7 @@ export const allEvents = [
     color: "google-green",
   },
   {
+    id: "mock-placement-drive",
     title: "Mock Placement Drive",
     date: "Feb 20-21, 2026",
     startDate: "2026-02-20",
@@ -78,6 +82,7 @@ export const allEvents = [
     color: "google-yellow",
   },
   {
+    id: "resume-building-session",
     title: "Resume Building Session",
     date: "February 13, 2026",
     startDate: "2026-02-13",
@@ -90,6 +95,7 @@ export const allEvents = [
     color: "google-blue",
   },
   {
+    id: "web-dev-sessions",
     title: "Web Dev Sessions",
     date: "Every Tue & Thu",
     startDate: "2026-03-01",
@@ -103,6 +109,7 @@ export const allEvents = [
     color: "google-yellow",
   },
   {
+    id: "aiml-ds-sessions",
     title: "AIML-DS Sessions",
     date: "Every Wed & Thu",
     startDate: "2026-03-01",
@@ -116,6 +123,7 @@ export const allEvents = [
     color: "google-red",
   },
   {
+    id: "android-sessions",
     title: "Android Sessions",
     date: "Every Wednesday",
     startDate: "2026-03-01",
@@ -129,6 +137,7 @@ export const allEvents = [
     color: "google-green",
   },
   {
+    id: "cp-sessions",
     title: "CP Sessions",
     date: "Every Mon & Fri",
     startDate: "2026-03-01",
@@ -142,6 +151,7 @@ export const allEvents = [
     color: "google-yellow",
   },
   {
+    id: "iot-sessions",
     title: "IoT Sessions",
     date: "Every Friday",
     startDate: "2026-03-01",
@@ -159,6 +169,7 @@ export const allEvents = [
     color: "google-blue",
   },
   {
+    id: "solution-challenge-hackathon",
     title: "Solution Challenge Hackathon",
     date: "9th & 10th Feb 2025",
     startDate: "2025-02-09",
@@ -176,6 +187,7 @@ export const allEvents = [
     color: "google-red",
   },
   {
+    id: "gdsc-cvr-kickstart-event",
     title: "GDSC CVR Kickstart Event",
     date: "15 Sept 2021",
     startDate: "2021-09-15",
@@ -192,6 +204,7 @@ export const allEvents = [
     color: "google-green",
   },
   {
+    id: "intro-30-days-google-cloud",
     title: "Introduction to 30 days of google cloud",
     date: "02 Nov 2021",
     startDate: "2021-11-02",
@@ -208,6 +221,7 @@ export const allEvents = [
     color: "google-blue",
   },
   {
+    id: "gdsc-cvr-wow-kickstart",
     title: "GDSC CVR World of Women kickstart",
     date: "16 Oct 2021",
     startDate: "2021-10-16",
@@ -224,6 +238,7 @@ export const allEvents = [
     color: "google-red",
   },
   {
+    id: "web-technologies-webinar",
     title: "Webinar on Introduction to Web Technologies",
     date: "18 Oct 2021",
     startDate: "2021-10-18",
@@ -236,6 +251,7 @@ export const allEvents = [
     color: "google-yellow",
   },
   {
+    id: "training-by-cyrrup-solutions",
     title: "Training by Cyrrup Solutions",
     date: "08 Nov 2021",
     startDate: "2021-11-08",

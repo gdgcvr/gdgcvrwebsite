@@ -156,40 +156,48 @@ const Hero = () => {
           </motion.div>
 
           {/* 2b. Event Ticker (The "Time" Element) - ACTIVE BLUE */}
-          <motion.article
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="md:col-span-1 lg:col-span-1 bg-google-blue border border-google-blue rounded-[2rem] p-6 relative overflow-hidden group shadow-lg shadow-google-blue/20 min-h-[180px] flex flex-col justify-between"
-            role="region"
-            aria-label={eventLabel}
+            className="md:col-span-1 lg:col-span-1"
           >
-            <div className="flex justify-between items-start">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-google-blue shadow-sm">
-                <Zap size={18} fill="currentColor" />
+            <Link
+              href="/events?id=latest-event"
+              className="h-full w-full bg-google-blue border border-google-blue rounded-[2rem] p-6 relative overflow-hidden group shadow-lg shadow-google-blue/20 min-h-[180px] flex flex-col justify-between hover:shadow-xl hover:shadow-google-blue/30 hover:scale-[1.02] active:scale-[0.99] transition-all duration-300 cursor-pointer"
+              role="region"
+              aria-label={eventLabel}
+            >
+              <div className="flex justify-between items-start">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-google-blue shadow-sm group-hover:scale-110 transition-transform duration-300">
+                  <Zap size={18} fill="currentColor" />
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold uppercase tracking-widest text-white/80">
+                    {eventLabel}
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-white/70 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                </div>
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-white/80">
-                {eventLabel}
-              </span>
-            </div>
-            <div className="mt-2">
-              <h2 className="text-2xl font-bold text-white">
-                {latestEvent.title}
-              </h2>
-              <time className="text-white/80 block">{latestEvent.date}</time>
-              <p
-                className="mt-2 text-white/70 text-sm truncate"
-                title={latestEvent.description}
-              >
-                {latestEvent.description}
-              </p>
-            </div>
-            {/* Decorative Big Icon */}
-            <Zap
-              className="absolute -bottom-4 -right-4 w-32 h-32 text-white/10 transform -rotate-12 pointer-events-none"
-              aria-hidden="true"
-            />
-          </motion.article>
+              <div className="mt-2">
+                <h2 className="text-2xl font-bold text-white group-hover:underline decoration-white/50 underline-offset-4 transition-all">
+                  {latestEvent.title}
+                </h2>
+                <time className="text-white/80 block">{latestEvent.date}</time>
+                <p
+                  className="mt-2 text-white/70 text-sm truncate"
+                  title={latestEvent.description}
+                >
+                  {latestEvent.description}
+                </p>
+              </div>
+              {/* Decorative Big Icon */}
+              <Zap
+                className="absolute -bottom-4 -right-4 w-32 h-32 text-white/10 transform -rotate-12 pointer-events-none group-hover:scale-110 group-hover:rotate-0 transition-transform duration-500"
+                aria-hidden="true"
+              />
+            </Link>
+          </motion.div>
 
           {/* 2c. Community & Join (Split) */}
           <div className="md:col-span-2 lg:col-span-1 flex gap-4 md:gap-6 min-h-[130px]">

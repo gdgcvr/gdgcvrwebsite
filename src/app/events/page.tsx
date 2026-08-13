@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import GoogleCalendar from "@/components/GoogleCalendar";
-import { allEvents } from "@/data/events";
+import { allEvents, latestEvent } from "@/data/events";
 import {
   Dialog,
   DialogContent,
@@ -16,12 +17,45 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const Events = () => {
+const EventsContent = () => {
+  const searchParams = useSearchParams();
   const [filter, setFilter] = useState<"all" | "upcoming" | "past">("all");
   const [selectedEvent, setSelectedEvent] = useState<
     (typeof allEvents)[0] | null
   >(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const eventId = searchParams?.get("id") || searchParams?.get("event");
+    const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
+    const target = eventId || hash;
+
+    if (target) {
+      const found = allEvents.find((e: any) => {
+        if (target === "latest-event" || target === "latest") {
+          return e.title === latestEvent.title;
+        }
+        return (
+          e.id === target ||
+          e.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") === target.toLowerCase() ||
+          e.title.toLowerCase() === target.toLowerCase()
+        );
+      });
+
+      if (found) {
+        setSelectedEvent(found as any);
+        setTimeout(() => {
+          const el =
+            document.getElementById(target) ||
+            document.getElementById("latest-event") ||
+            document.getElementById((found as any).id);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 150);
+      }
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (selectedImageIndex === null || !selectedEvent) return;
@@ -175,6 +209,7 @@ const Events = () => {
                     className={`w-full lg:max-w-5xl ${isEven ? "self-start mr-auto" : "self-end ml-auto"}`}
                   >
                     <article
+                      id={event.title === latestEvent.title ? "latest-event" : (event as any).id}
                       className="group relative w-full perspective-1000 cursor-pointer"
                       onClick={() => setSelectedEvent(event as any)}
                       aria-labelledby={`event-title-${i}`}
@@ -319,6 +354,15 @@ const Events = () => {
           if (!open) {
             setSelectedEvent(null);
             setSelectedImageIndex(null);
+            if (typeof window !== "undefined" && window.location.search) {
+              const url = new URL(window.location.href);
+              if (url.searchParams.has("id") || url.searchParams.has("event")) {
+                url.searchParams.delete("id");
+                url.searchParams.delete("event");
+                const cleanUrl = url.pathname + (url.search ? url.search : "") + url.hash;
+                window.history.replaceState({}, "", cleanUrl);
+              }
+            }
           }
         }}
       >
@@ -396,8 +440,7 @@ const Events = () => {
                     </div>
 
                     {/* Gallery Section */}
-                    {getEventState(selectedEvent as any) === "past" &&
-                      (selectedEvent as any).gallery &&
+                    {(selectedEvent as any).gallery &&
                       (selectedEvent as any).gallery.length > 0 && (
                         <div className="space-y-6">
                           <div className="flex items-center justify-between">
@@ -574,4 +617,10 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default function Events() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#fafafa]" />}>
+      <EventsContent />
+    </Suspense>
+  );
+}
