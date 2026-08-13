@@ -5,6 +5,7 @@ import InitialLoader from "../components/InitialLoader/InitialLoader";
 import { Providers } from "../components/Providers";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import RecruitmentModal from "../components/RecruitmentModal";
 import { latestEvent } from "@/data/events";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
@@ -102,6 +103,7 @@ export default function RootLayout({
           <InitialLoader />
           <div className="min-h-screen flex flex-col">
             <Navbar />
+            <RecruitmentModal />
             <main className="flex-1 relative">{children}</main>
             <Footer />
           </div>

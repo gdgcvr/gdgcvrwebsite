@@ -11,7 +11,6 @@ import { allEvents, latestEvent } from "@/data/events";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
@@ -126,7 +125,7 @@ const EventsContent = () => {
         <div className="container-wide relative z-10">
           {/* Header */}
           <AnimatedSection delay={0.05}>
-            <div className="flex flex-col items-center gap-4 mb-16 border-b border-black/5 pb-8 w-full text-center">
+            <div className="flex flex-col items-center gap-4 border-b border-black/5 pb-8 w-full text-center">
               <h1 className="heading-lg mb-2">Upcoming Events</h1>
               <p className="body-lg text-neutral-500 max-w-md">
                 Secure your spot. Join us for workshops, hackathons, and tech
@@ -137,7 +136,7 @@ const EventsContent = () => {
 
           {/* Calendar View - Embedded Directly */}
           <AnimatedSection delay={0.1}>
-            <div className="mb-16 w-full max-w-7xl mx-auto bg-white rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
+            <div className="mb-10 w-full max-w-5xl mx-auto bg-white rounded-3xl shadow-lg border border-neutral-100 overflow-hidden">
               <div className="bg-neutral-900 text-white p-6 md:p-8 flex justify-between items-center">
                 <div>
                   <h2 className="text-2xl font-bold">Event Calendar</h2>
@@ -146,8 +145,8 @@ const EventsContent = () => {
                   </p>
                 </div>
               </div>
-              <div className="p-4 md:p-6 bg-white min-h-[600px]">
-                <GoogleCalendar />
+              <div className="p-4 md:p-6 bg-white min-h-[500px]">
+                <GoogleCalendar height={500} />
               </div>
             </div>
           </AnimatedSection>
