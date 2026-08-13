@@ -6,6 +6,7 @@ export const latestEvent = {
   description:
     "A 36-hour hackathon organized by GDG on Campus CVR College of Engineering, where student developers, designers, and innovators come together to build, compete, and create.",
 };
+
 export const allEvents = [
   {
     title: "CodeNyx Hackathon",
@@ -15,7 +16,17 @@ export const allEvents = [
     description:
       "CodeNyx is a 36-hour hackathon organized by GDG on Campus CVR College of Engineering, where student developers, designers, and innovators come together to build, compete, and create.",
     image: "https://code-nyx.vercel.app/ss.png",
-    gallery: [],
+    gallery: [
+      "/events/codenyx/eval1.jpeg",
+      "/events/codenyx/eval2.jpeg",
+      "/events/codenyx/eval3.JPG",
+      "/events/codenyx/nagesh_jury.JPG",
+      "/events/codenyx/night.JPG",
+      "/events/codenyx/participants.JPG",
+      "/events/codenyx/start.JPG",
+      "/events/codenyx/team.JPG",
+      "/events/codenyx/vijaya_mair.jpeg",
+    ],
     color: "google-blue",
     link: "https://code-nyx.tech",
   },
@@ -28,7 +39,17 @@ export const allEvents = [
     descriptionLong:
       "The EmbeddedX is an exciting event where students showcase innovative projects that combine embedded systems, Internet of Things, and Artificial Intelligence. The expo focuses on solving real-world problems through smart connected devices and intelligent automation. Visitors will explore a wide range of projects demonstrating the power of IoT technology and its applications in areas such as smart homes, healthcare, agriculture, and automation.",
     image: "/events/embeddedx.jpeg",
-    gallery: ["/events/iot_expo.jpeg", "/events/iot_expo2.jpeg"],
+    gallery: [
+      "/events/embeddedx/audi.JPG",
+      "/events/embeddedx/drone.JPG",
+      "/events/embeddedx/eval1.JPG",
+      "/events/embeddedx/eval2.jpg",
+      "/events/embeddedx/project1.JPG",
+      "/events/embeddedx/project2.JPG",
+      "/events/embeddedx/random.jpg",
+      "/events/embeddedx/start.jpeg",
+      "/events/embeddedx/vijaya_mair.JPG",
+    ],
     color: "google-red",
   },
   {

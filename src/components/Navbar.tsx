@@ -4,13 +4,16 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+export const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScSyq_9bFmQHK13VK6uUy8oM1Ip2WKzZBK35K081t2pyxC46A/viewform";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Team", path: "/team" },
   { name: "Events", path: "/events" },
+  { name: "Team", path: "/team" },
   { name: "Blog", path: "/blog" },
 ];
 
@@ -83,7 +86,7 @@ const Navbar = () => {
               key={link.path}
               href={link.path}
               aria-current={pathname === link.path ? "page" : undefined}
-              className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`relative px-3.5 lg:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 pathname === link.path
                   ? "bg-white text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground hover:bg-white/50"
@@ -95,7 +98,21 @@ const Navbar = () => {
         </div>
 
         {/* Right Side: CTA + Mobile Toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* Register CTA Button */}
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 bg-foreground text-background text-xs md:text-sm font-medium px-3.5 py-2 md:px-4 md:py-2 rounded-full hover:bg-neutral-800 transition-all duration-200 shadow-sm hover:shadow hover:scale-[1.02] active:scale-[0.98] group"
+          >
+            <span>Register Here</span>
+            <ArrowUpRight
+              size={15}
+              className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+
           {/* Mobile Toggle */}
           <button
             className="md:hidden p-2 rounded-full hover:bg-secondary transition-colors text-foreground"
@@ -136,6 +153,19 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+
+              <div className="pt-2 mt-1 border-t border-black/5">
+                <a
+                  href={REGISTER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl text-base font-medium bg-foreground text-background hover:bg-neutral-800 shadow-sm transition-all duration-200"
+                >
+                  <span>Register Here</span>
+                  <ArrowUpRight size={18} />
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

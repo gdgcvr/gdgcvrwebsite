@@ -1,5 +1,8 @@
 import { ImageResponse } from "next/og";
 import { latestEvent } from "@/data/events";
+import { REGISTER_URL } from "@/constants/links";
+
+export { REGISTER_URL };
 
 export const runtime = "edge";
 export const alt = "GDG on Campus CVR — Where Campus Meets Google";
@@ -173,69 +176,126 @@ export default function Image() {
           flexShrink: 0,
         }}
       >
-        {/* Terminal */}
+        {/* Recruiting / Register Card */}
         <div
           style={{
             flex: 1,
             background: "#171717",
             borderRadius: "32px",
-            padding: "24px 28px",
+            padding: "20px 24px",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "space-between",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+          {/* Green accent glow */}
+          <div
+            style={{
+              display: "flex",
+              position: "absolute",
+              top: "-20px",
+              right: "-20px",
+              width: "100px",
+              height: "100px",
+              borderRadius: "50%",
+              background: GREEN,
+              opacity: 0.15,
+              filter: "blur(24px)",
+            }}
+          />
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}
+          >
             <div
               style={{
                 display: "flex",
-                width: "12px",
-                height: "12px",
+                width: "8px",
+                height: "8px",
                 borderRadius: "50%",
-                background: "rgba(239,68,68,0.8)",
+                background: "#4ade80",
               }}
             />
-            <div
+            <span
               style={{
-                display: "flex",
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                background: "rgba(234,179,8,0.8)",
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "1.5px",
+                color: "#4ade80",
               }}
-            />
-            <div
-              style={{
-                display: "flex",
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                background: "rgba(34,197,94,0.8)",
-              }}
-            />
+            >
+              WE ARE RECRUITING
+            </span>
           </div>
+
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "4px",
-              fontFamily: "monospace",
-              fontSize: "14px",
-              color: "#a3a3a3",
+              gap: "3px",
+              marginTop: "6px",
             }}
           >
-            <div style={{ display: "flex", gap: "4px" }}>
-              <span style={{ color: "#c084fc" }}>const</span>
-              <span style={{ color: "#60a5fa" }}>future</span>
-              <span>=</span>
-              <span style={{ color: "#facc15" }}>init</span>
-              <span>();</span>
-            </div>
-            <div style={{ display: "flex", gap: "4px" }}>
-              <span style={{ color: "#c084fc" }}>await</span>
-              <span>future.</span>
-              <span style={{ color: "#4ade80" }}>build</span>
-              <span>();</span>
-            </div>
+            <span
+              style={{
+                fontSize: "18px",
+                fontWeight: 800,
+                color: "#ffffff",
+                letterSpacing: "-0.4px",
+                lineHeight: 1.2,
+              }}
+            >
+              Register for 2026-27 batch
+            </span>
+            <span
+              style={{
+                fontSize: "12px",
+                color: "#a3a3a3",
+                lineHeight: 1.35,
+              }}
+            >
+              Passionate about building & tech? Register now to join GDG on Campus CVR College of Engineering.
+            </span>
+          </div>
+
+          {/* CTA Button */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              background: "rgba(255,255,255,0.12)",
+              color: "#ffffff",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: "9999px",
+              padding: "7px 14px",
+              marginTop: "8px",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "#ffffff",
+              }}
+            >
+              Register Here
+            </span>
+            <span
+              style={{
+                fontSize: "13px",
+                fontWeight: 700,
+                color: "#ffffff",
+              }}
+            >
+              ↗
+            </span>
           </div>
         </div>
 

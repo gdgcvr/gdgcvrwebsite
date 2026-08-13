@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import GoogleCalendar from "@/components/GoogleCalendar";
@@ -21,6 +21,30 @@ const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState<
     (typeof allEvents)[0] | null
   >(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (selectedImageIndex === null || !selectedEvent) return;
+    const gallery = (selectedEvent as any).gallery || [];
+    if (gallery.length === 0) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedImageIndex(null);
+      } else if (e.key === "ArrowRight") {
+        setSelectedImageIndex((prev) =>
+          prev !== null ? (prev + 1) % gallery.length : null
+        );
+      } else if (e.key === "ArrowLeft") {
+        setSelectedImageIndex((prev) =>
+          prev !== null ? (prev - 1 + gallery.length) % gallery.length : null
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex, selectedEvent]);
 
   const getEventState = (event: (typeof allEvents)[0]) => {
     const today = new Date();
@@ -291,7 +315,12 @@ const Events = () => {
       {/* Event Details Dialog */}
       <Dialog
         open={!!selectedEvent}
-        onOpenChange={(open) => !open && setSelectedEvent(null)}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedEvent(null);
+            setSelectedImageIndex(null);
+          }
+        }}
       >
         <DialogContent className="max-w-4xl p-0 overflow-hidden border-none bg-white rounded-3xl shadow-2xl">
           <ScrollArea className="max-h-[85vh]">
@@ -309,7 +338,10 @@ const Events = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
                   <button
-                    onClick={() => setSelectedEvent(null)}
+                    onClick={() => {
+                      setSelectedEvent(null);
+                      setSelectedImageIndex(null);
+                    }}
                     className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-all z-50"
                   >
                     <X className="w-5 h-5" />
@@ -379,25 +411,56 @@ const Events = () => {
 
                           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                             {(selectedEvent as any).gallery.map(
-                              (img: string, idx: number) => (
-                                <motion.div
-                                  key={idx}
-                                  whileHover={{ scale: 1.02 }}
-                                  className={`relative rounded-2xl overflow-hidden cursor-zoom-in h-48 border border-black/5 ${
+                              (img: string, idx: number) => {
+                                const galleryLength = (
+                                  selectedEvent as any
+                                ).gallery.length;
+                                let spanClasses =
+                                  "col-span-1 md:col-span-1 h-48 md:h-56";
+
+                                if (galleryLength === 1) {
+                                  spanClasses =
+                                    "col-span-2 md:col-span-3 h-64 md:h-96";
+                                } else if (galleryLength === 2) {
+                                  spanClasses =
                                     idx === 0
                                       ? "col-span-2 md:col-span-2 h-64 md:h-80"
-                                      : "h-40 md:h-full"
-                                  }`}
-                                >
-                                  <Image
-                                    src={img}
-                                    alt={`Gallery image ${idx + 1} for ${selectedEvent.title}`}
-                                    fill
-                                    sizes="(max-width: 768px) 50vw, 33vw"
-                                    className="object-cover hover:scale-110 transition-transform duration-700"
-                                  />
-                                </motion.div>
-                              ),
+                                      : "col-span-2 md:col-span-1 h-64 md:h-80";
+                                } else {
+                                  if (idx === 0) {
+                                    spanClasses =
+                                      "col-span-2 md:col-span-2 h-64 md:h-80";
+                                  } else if (idx === 1) {
+                                    spanClasses =
+                                      "col-span-1 md:col-span-1 h-48 md:h-80";
+                                  } else {
+                                    spanClasses =
+                                      "col-span-1 md:col-span-1 h-48 md:h-56";
+                                  }
+                                }
+
+                                return (
+                                  <motion.div
+                                    key={idx}
+                                    whileHover={{ scale: 1.02 }}
+                                    onClick={() => setSelectedImageIndex(idx)}
+                                    className={`relative rounded-2xl overflow-hidden cursor-zoom-in border border-black/5 group shadow-sm hover:shadow-md transition-all ${spanClasses}`}
+                                  >
+                                    <Image
+                                      src={img}
+                                      alt={`Gallery image ${idx + 1} for ${selectedEvent.title}`}
+                                      fill
+                                      sizes="(max-width: 768px) 50vw, 33vw"
+                                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2.5 rounded-full bg-white/90 backdrop-blur-md text-black shadow-lg">
+                                        <ZoomIn className="w-5 h-5" />
+                                      </span>
+                                    </div>
+                                  </motion.div>
+                                );
+                              },
                             )}
                           </div>
                         </div>
@@ -423,6 +486,90 @@ const Events = () => {
           </ScrollArea>
         </DialogContent>
       </Dialog>
+
+      {/* Lightbox Image Preview Modal */}
+      <AnimatePresence>
+        {selectedImageIndex !== null && selectedEvent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImageIndex(null)}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+          >
+            <div className="absolute top-6 left-6 text-white flex items-center gap-3 z-50">
+              <span className="text-sm font-medium opacity-75">
+                {(selectedEvent as any).title} &bull; Image {selectedImageIndex + 1} of{" "}
+                {((selectedEvent as any).gallery || []).length}
+              </span>
+            </div>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex(null);
+              }}
+              className="absolute top-6 right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-all z-50 shadow-lg"
+              aria-label="Close image preview"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {((selectedEvent as any).gallery || []).length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const len = (selectedEvent as any).gallery.length;
+                    setSelectedImageIndex((prev) =>
+                      prev !== null ? (prev - 1 + len) % len : 0
+                    );
+                  }}
+                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-all z-50 shadow-lg"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const len = (selectedEvent as any).gallery.length;
+                    setSelectedImageIndex((prev) =>
+                      prev !== null ? (prev + 1) % len : 0
+                    );
+                  }}
+                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-all z-50 shadow-lg"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full h-[75vh] md:h-[85vh] flex items-center justify-center"
+            >
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={(selectedEvent as any).gallery[selectedImageIndex]}
+                  alt={`Full size gallery image ${selectedImageIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
