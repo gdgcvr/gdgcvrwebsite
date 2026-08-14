@@ -261,6 +261,9 @@ export default function Image() {
               }}
             >
               Passionate about building & tech? Register now to join GDG on Campus CVR College of Engineering.
+              <span style={{ display: "block", marginTop: "4px", color: "#facc15", fontWeight: 600 }}>
+                * Open exclusively to 2nd & 3rd year students
+              </span>
             </span>
           </div>
 

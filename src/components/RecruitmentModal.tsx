@@ -121,9 +121,12 @@ const RecruitmentModalInner = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 }}
-                  className="text-white/50 text-sm font-medium max-w-xs"
+                  className="text-white/70 text-sm font-medium max-w-sm"
                 >
                   Be part of the most vibrant developer community on campus.
+                  <span className="block mt-1.5 text-google-yellow/90 text-xs font-semibold">
+                    * Open exclusively to 2nd & 3rd year students
+                  </span>
                 </motion.p>
               </div>
 

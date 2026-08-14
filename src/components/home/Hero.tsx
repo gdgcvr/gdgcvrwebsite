@@ -136,6 +136,9 @@ const Hero = () => {
               </h2>
               <p className="mt-1.5 text-neutral-400 text-xs md:text-sm leading-relaxed">
                 Passionate about building, learning, and tech? Register now to join GDG on Campus CVR College of Engineering.
+                <span className="block mt-1.5 text-google-yellow/90 font-medium">
+                  * Open exclusively to 2nd & 3rd year students
+                </span>
               </p>
             </div>
 
