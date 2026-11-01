@@ -40,7 +40,7 @@ const Team = () => {
     if (r.includes("cp") || r.includes("competitive"))
       return "Competitive Programming";
     if (r.includes("web")) return "Web Development";
-    if (r.includes("ai") && r.includes("machine")) return "AI & Machine Learning";
+    if (r.includes("aiml")) return "Artificial Intelligence & Machine Learning";
     if (r.includes("ai") && r.includes("agentic")) return "Agentic AI";
     if (r.includes("cyber")) return "Cyber Security";
     if (r.includes("android") || r.includes("app"))
@@ -70,7 +70,7 @@ const Team = () => {
       color: "text-google-blue",
       description: "Crafting the digital experiences.",
     },
-    "AI & Machine Learning": {
+    "Artificial Intelligence & Machine Learning": {
       icon: Brain,
       color: "text-google-red",
       description: "Innovating with intelligence.",

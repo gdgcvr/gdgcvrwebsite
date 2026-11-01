@@ -61,25 +61,25 @@ export const teamMembers = [
   },
   {
     name: "Bindusree Kunuru",
-    role: "AI and Machine Learning Core Team Lead",
+    role: "AIML Core Team Lead",
     image: "/team/Bindusree_Kunuru.jpg",
     linkedin: "https://www.linkedin.com/in/bindusreekunuru/"
   },
   {
     name: "Vrishank Manglige",
-    role: "AI and Machine Learning Core Team Member",
+    role: "AIML Core Team Member",
     image: "/team/Vrishank_Manglige.jpg",
     linkedin: "https://www.linkedin.com/in/vrishank-manglige-198426327/"
   },
   {
     name: "Nookala Sri Likhitha Annapurna",
-    role: "AI and Machine Learning Core Team Member",
+    role: "AIML Core Team Member",
     image: "/team/Nookala_Sri_Likhitha_Annapurna.jpg",
     linkedin: "https://linkedin.com/in/sri-likhitha-nookala-b16b28410/"
   },
   {
     name: "Marla Murari Ramcharan",
-    role: "AI and Machine Learning Core Team Member",
+    role: "AIML Core Team Member",
     image: "/team/Marla_Murari_Ramcharan.jpg",
     linkedin: "https://www.linkedin.com/in/murariramcharan"
   },
@@ -195,7 +195,7 @@ export const teamMembers = [
     name: "Sarayu Kistipati",
     role: "Logistics Core Team Member",
     image: "/team/Sarayu_Kistipati.jpg",
-    linkedin: "https://www.linkedin.com/in/sarayu-reddy-4a47a7347"
+    linkedin: "https://www.linkedin.com/in/sarayu-kistipati-4a47a7347"
   },
   {
     name: "Dara Balaji",
