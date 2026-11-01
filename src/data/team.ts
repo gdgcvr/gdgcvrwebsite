@@ -12,166 +12,237 @@ export const teamMembers = [
     linkedin: "https://linkedin.com/in/dr-seetharamnagesh-appe-4584281aa/",
   },
   {
-    name: "Sai Charan Reddy Padigepati",
-    role: "GDGC Lead",
-    image: "/team/P_Sai_Charan_Reddy.jpg",
-    linkedin: "https://linkedin.com/in/0xmise05/",
-  },
-  {
-    name: "Mantripragada Komal Sathvik",
-    role: "Web Core Team Lead",
-    image: "/team/Mantripragada_Komal_Sathvik.jpg",
-    linkedin: "https://linkedin.com/in/komalsathvik",
-  },
-  {
-    name: "Harivallabha Sai Surishetty",
-    role: "Android Core Team Lead",
-    image: "/team/Harivallabha_Sai_Surishetty.webp",
-    linkedin: "https://linkedin.com/in/vallabha-tech/",
-  },
-  {
-    name: "NIMMAGADDA TRISHA",
-    role: "AIML-DS Core Team Lead",
-    image: "/team/Trisha_Nimmagadda.png",
-    linkedin: "https://linkedin.com/in/trisha-nimmagadda-a947522a5",
-  },
-  {
-    name: "Chipurla Yashwanth Reddy",
-    role: "CP Core Team Lead",
-    image: "/team/Chipurla_Yashwanth_Reddy.jpg",
-    linkedin: "https://linkedin.com/in/yashwanth-reddy-chipurla/",
-  },
-  {
-    name: "Aka Shreshta",
-    role: "Graphic Design Core Team Member",
-    image: "/team/Aka_Shresta.jpg",
-    linkedin: "https://linkedin.com/in/shreshta-aka/",
-  },
-  {
-    name: "Yamjala Manu Palash Reddy",
-    role: "Logistics Core Team Lead",
-    image: "/team/Yamjala_Manu_Palash_Reddy.jpg",
-    linkedin: "https://linkedin.com/in/yamjala-manu-palash-reddy/",
-  },
-  {
-    name: "S. Vijay Amaresh",
-    role: "IoT and Embedded Systems Core Team Lead",
-    image: "/team/S_Vijay_Amaresh.jpg",
-    linkedin: "https://linkedin.com/in/vijay-amaresh-6853aa291",
-  },
-  {
-    name: "K. Srivalli",
-    role: "IoT and Embedded Systems Core Team Member",
-    image: "/team/srivalli.jpeg",
-    linkedin: "https://linkedin.com/in/srivalli-kunta-5a8110291",
-  },
-  {
-    name: "Nanda Nagulavancha",
-    role: "CP Core Team Member",
-    image: "/team/Nanda_Nagulavancha.jpg",
-    linkedin: "https://linkedin.com/in/nanda-nagulavancha/",
-  },
-  {
-    name: "Eswar Dudi",
-    role: "Web Core Team Member",
-    image: "/team/Eswar_Dudi.jpg",
-    linkedin: "https://linkedin.com/in/eswar-dudi",
-  },
-  {
-    name: "Enjamuri Manuha",
-    role: "Logistics Core Team Member",
-    image: "/team/Manuha_Enjamuri.png",
-    linkedin: "https://linkedin.com/in/enjamurimanuha/",
-  },
-  {
-    name: "P. Kawshikk Shriidatta",
-    role: "Web Core Team member",
-    image: "/team/P_Kawshikk_Shriidatta.jpg",
-    linkedin: "https://linkedin.com/in/p-kawshikk-shriidatta-a03179320/",
-  },
-  {
-    name: "HAZARI THANUSREE",
-    role: "CP Core Team Member",
-    image: "/team/HAZARI_THANUSREE.png",
-    linkedin: "https://linkedin.com/in/thanusree-hazari-a291972a7/",
-  },
-  {
-    name: "Sreeja Sadhu",
-    role: "Web Core Team Member",
-    image: "/team/Sreeja_Sadhu.jpeg",
-    linkedin: "https://linkedin.com/in/sreejasadhu",
-  },
-  {
-    name: "Dudipala Sathwik Reddy",
-    role: "AIML-DS Core Team Member",
-    image: "/team/Dudipala_Sathwik_Reddy.jpeg",
-    linkedin: "https://linkedin.com/in/sathwik-dudipala-0b65b5262",
-  },
-  {
-    name: "Krishna Kireeti Gurijala",
-    role: "Android Core Team Member",
-    image: "/team/Krishna_Kireeti.jpeg",
-    linkedin: "https://linkedin.com/in/krishna-kireeti-gurijala-b146b312b",
-  },
-  {
-    name: "Kondi Krishna",
-    role: "Logistics Core Team Member",
-    image: "/team/Krishna_Kondi.jpg",
-    linkedin: "https://linkedin.com/in/krishnakondi/",
-  },
-  {
-    name: "Shaik Abubakar Siddiq",
-    role: "AIML-DS Core Team Member",
-    image: "/team/Siddiq_Shaik.jpg",
-    linkedin: "https://linkedin.com/in/shaik-abubakar-siddiq-83a81432a/",
-  },
-  {
     name: "Bokka Shashank Reddy",
+    role: "GDGC Lead",
+    image: "/team/Bokka_Shashank_Reddy.jpg",
+    linkedin: "https://www.linkedin.com/in/shashank-reddy-2b6b70354/"
+  },
+  {
+    name: "Chinnam Savanth",
+    role: "GDGC Lead",
+    image: "/team/Chinnam_Savanth.jpg",
+    linkedin: "https://www.linkedin.com/in/savanth-chinku/"
+  },
+  {
+    name: "Akshaya Bollampally",
+    role: "GDGC Lead",
+    image: "/team/Akshaya_Bollampally.jpg",
+    linkedin: "https://www.linkedin.com/in/akshaya-bollampally-b8b3b0327/"
+  },
+  {
+    name: "Kushagari Ravi Kumar Dharani",
+    role: "CP Core Team Lead",
+    image: "/team/Kushagari_Ravi_Kumar_Dharani.jpg",
+    linkedin: "https://www.linkedin.com/in/dharanikr/"
+  },
+  {
+    name: "Bhokre Sai Krishna",
     role: "CP Core Team Member",
-    image: "/team/Shashank_Reddy.jpg",
-    linkedin: "httsp://www.linkedin.com/in/shashank-reddy-2b6b70354/",
+    image: "/team/Bhokre_Sai_Krishna.jpg",
+    linkedin: "https://www.linkedin.com/in/bhokre-sai-krishna-5b3599316/"
   },
   {
-    name: "Sarvasiddi Tejasvvi",
+    name: "Gajji Sheshi Kiran",
     role: "CP Core Team Member",
-    image: "/team/SARVASIDDI_TEJASVVI.jpg",
-    linkedin: "https://linkedin.com/in/tejasvvi-sarvasiddi-4b2359360",
+    image: "/team/Gajji_Sheshi_Kiran.jpg",
+    linkedin: "https://www.linkedin.com/in/sheshi-kiran-65917738a/"
   },
   {
-    name: "Nidhi Varma Penumatcha",
-    role: "AIML-DS Core Team Member",
-    image: "/team/Nidhi_Varma.jpeg",
-    linkedin: "https://linkedin.com/in/nidhi-varma-37985a320",
+    name: "Madhav Sharma",
+    role: "CP Core Team Member",
+    image: "/team/Madhav_Sharma.jpg",
+    linkedin: "https://www.linkedin.com/in/madhav-sharma-852059414/"
   },
   {
-    name: "Agandla Rishitha",
-    role: "Graphic Design Core Team Member",
-    image: "/team/Rishitha_Agandla.png",
-    linkedin: "https://www.linkedin.com/in/agandla-rishitha-1934b4325/",
+    name: "Appe Naga Ananya",
+    role: "CP Core Team Member",
+    image: "/team/Appe_Naga_Ananya.jpg",
+    linkedin: "https://www.linkedin.com/in/ananya-appe-0b03393a0"
   },
   {
-    name: "M.SAICHARAN REDDY",
-    role: "Logistics Core Team Member",
-    image: "/team/M_SAICHARAN_REDDY.webp",
-    linkedin: "https://linkedin.com/in/myla-sai-charan-reddy-b4228a327",
+    name: "Bindusree Kunuru",
+    role: "AI and Machine Learning Core Team Lead",
+    image: "/team/Bindusree_Kunuru.jpg",
+    linkedin: "https://www.linkedin.com/in/bindusreekunuru/"
   },
   {
-    name: "Umarani Guduguntla",
+    name: "Vrishank Manglige",
+    role: "AI and Machine Learning Core Team Member",
+    image: "/team/Vrishank_Manglige.jpg",
+    linkedin: "https://www.linkedin.com/in/vrishank-manglige-198426327/"
+  },
+  {
+    name: "Nookala Sri Likhitha Annapurna",
+    role: "AI and Machine Learning Core Team Member",
+    image: "/team/Nookala_Sri_Likhitha_Annapurna.jpg",
+    linkedin: "https://linkedin.com/in/sri-likhitha-nookala-b16b28410/"
+  },
+  {
+    name: "Marla Murari Ramcharan",
+    role: "AI and Machine Learning Core Team Member",
+    image: "/team/Marla_Murari_Ramcharan.jpg",
+    linkedin: "https://www.linkedin.com/in/murariramcharan"
+  },
+  {
+    name: "Md Muzaffar",
+    role: "Agentic AI Core Team Lead",
+    image: "/team/Md_Muzaffar.jpg",
+    linkedin: "https://www.linkedin.com/in/mohd-muzaffar/"
+  },
+  {
+    name: "Sarikonda Sreevaishnavi",
+    role: "Agentic AI Core Team Member",
+    image: "/team/Sarikonda_Sreevaishnavi.jpg",
+    linkedin: "https://www.linkedin.com/in/sarikonda-sreevaishnavi-9634ba357"
+  },
+  {
+    name: "Ridhima Saha",
+    role: "Agentic AI Core Team Member",
+    image: "/team/Ridhima_Saha.jpg",
+    linkedin: "https://www.linkedin.com/in/ridhima-saha-124a50375/"
+  },
+  {
+    name: "Raghavendra CH",
+    role: "Agentic AI Core Team Member",
+    image: "/team/Raghavendra_CH.jpg",
+    linkedin: "https://www.linkedin.com/in/raghavendra-ch-5a0241419"
+  },
+  {
+    name: "Sanskar",
+    role: "Web Core Team Lead",
+    image: "/team/Sanskar.jpg",
+    linkedin: "https://www.linkedin.com/in/yashwanth-sanskar/"
+  },
+  {
+    name: "Rishiveid Narsingoju",
+    role: "Web Core Team Member",
+    image: "/team/Rishiveid_Narsingoju.jpg",
+    linkedin: "https://www.linkedin.com/in/rishi-narsingoju-144106314/"
+  },
+  {
+    name: "Dahagama Sreeshanth",
+    role: "Web Core Team Member",
+    image: "/team/Dahagama_Sreeshanth.jpg",
+    linkedin: "https://www.linkedin.com/in/sree-shanth-dahagam-469885323/"
+  },
+  {
+    name: "Shavva Varshith Reddy",
+    role: "Web Core Team Member",
+    image: "/team/Shavva_Varshith_Reddy.jpg",
+    linkedin: "https://www.linkedin.com/in/shavva-varshith-reddy-401b59366/"
+  },
+  {
+    name: "Bhanu Teja Gupta Vuppu",
+    role: "Cybersecurity Core Team Lead",
+    image: "/team/Bhanu_Teja_Gupta_Vuppu.jpg",
+    linkedin: "https://www.linkedin.com/in/v-bhanuteja"
+  },
+  {
+    name: "Bharath Kumar Thirandas",
+    role: "Cybersecurity Core Team Member",
+    image: "/team/Bharath_Kumar_Thirandas.jpg",
+    linkedin: "https://www.linkedin.com/in/bharath-kumar-5a508b378/"
+  },
+  {
+    name: "Mohammad Taufeeq Sameer",
+    role: "Cybersecurity Core Team Member",
+    image: "/team/Mohammad_Taufeeq_Sameer.jpg",
+    linkedin: "https://www.linkedin.com/in/taufeeqsameer/"
+  },
+  {
+    name: "Krishna Kireeti Gunjala",
+    role: "Android Core Team Lead",
+    image: "/team/Krishna_Kireeti_Gunjala.jpg",
+    linkedin: "https://www.linkedin.com/in/krishna-kireeti-gurijala-b146b312b"
+  },
+  {
+    name: "Sravistha Sai Savitri Poluri",
     role: "Android Core Team Member",
-    image: "/team/Umarani_Guduguntla.jpg",
-    linkedin: "https://linkedin.com/in/umarani-guduguntla-6b5789322",
+    image: "/team/Sravistha_Sai_Savitri_Poluri.jpg",
+    linkedin: "https://www.linkedin.com/in/sravistha-poluri-898181411"
   },
   {
-    name: "Ch. Savanth",
-    role: "Photography Core Team Member",
-    image: "/team/Savanth_Chinku.jpg",
-    linkedin: "https://linkedin.com/in/savanth-chinku/",
+    name: "Lachannagari Surendar",
+    role: "IoT & Embedded Systems Core Team Lead",
+    image: "/team/Lachannagari_Surendar.jpg",
+    linkedin: "https://www.linkedin.com/in/surendhar77"
   },
   {
-    name: "Ranabothu Varshitha Reddy",
-    role: "Photography Core Team Member",
-    image: "/team/Ranabothu_Varshitha_Reddy.jpg",
-    linkedin: "https://linkedin.com/in/ranabothu-varshitha-reddy-b883b52a6",
-    objectPosition: "object-bottom",
+    name: "Madduri Abhinav Kumar",
+    role: "IoT & Embedded Systems Core Team Member",
+    image: "/team/Madduri_Abhinav_Kumar.jpg",
+    linkedin: "https://www.linkedin.com/in/madduri-abhinav-kumar-36366a38b"
   },
+  {
+    name: "Panjugula Hansini Goud",
+    role: "Logistics Core Team Lead",
+    image: "/team/Panjugula_Hansini_Goud.jpg",
+    linkedin: "https://www.linkedin.com/in/hansini-panjugula-68961a337/"
+  },
+  {
+    name: "Saanvi Ananthoj",
+    role: "Logistics Core Team Member",
+    image: "/team/Saanvi_Ananthoj.jpg",
+    linkedin: "https://www.linkedin.com/in/saanvi-a-a8a61b3b3"
+  },
+  {
+    name: "Mayank Pandey",
+    role: "Logistics Core Team Member",
+    image: "/team/Mayank_Pandey.jpg",
+    linkedin: "https://www.linkedin.com/in/mayank-pandey-a8a743377/"
+  },
+  {
+    name: "Sarayu Kistipati",
+    role: "Logistics Core Team Member",
+    image: "/team/Sarayu_Kistipati.jpg",
+    linkedin: "https://www.linkedin.com/in/sarayu-reddy-4a47a7347"
+  },
+  {
+    name: "Dara Balaji",
+    role: "Logistics Core Team Member",
+    image: "/team/Dara_Balaji.jpg",
+    linkedin: "https://www.linkedin.com/in/dara-balaji-53713b322/"
+  },
+  {
+    name: "Srindha Gammula",
+    role: "Graphic Design Core Team Lead",
+    image: "/team/Srindha_Gammula.jpg",
+    linkedin: "https://www.linkedin.com/in/srindhagammula/"
+  },
+  {
+    name: "Laasya Meghana Nalam",
+    role: "Graphic Design Core Team Member",
+    image: "/team/Laasya_Meghana_Nalam.jpg",
+    linkedin: "https://www.linkedin.com/in/laasya-nalam-953b6b382/"
+  },
+  {
+    name: "K. Vishal Reddy",
+    role: "Graphic Design Core Team Member",
+    image: "/team/K._Vishal_Reddy.jpg",
+    linkedin: "https://www.linkedin.com/in/vishal-reddy-karra-420842347"
+  },
+  {
+    name: "Aashritha Reddy",
+    role: "Social Media Core Team Lead",
+    image: "/team/Aashritha_Reddy.jpg",
+    linkedin: "https://linkedin.com/in/aashritha-reddy-b4240634a"
+  },
+  {
+    name: "Sadhwick Reddy",
+    role: "Social Media Core Team Member",
+    image: "/team/Sadhwick_Reddy.jpg",
+    linkedin: "https://www.linkedin.com/in/g-sadhwick-reddy-ab941b1b9"
+  },
+  {
+    name: "Shreyan Vogge",
+    role: "Photography Core Team Lead",
+    image: "/team/Shreyan_Vogge.jpg",
+    linkedin: "https://www.linkedin.com/in/sai-shreyan-4000823b7/"
+  },
+  {
+    name: "Arley Vijayraj Shingade",
+    role: "Photography Core Team Member",
+    image: "/team/Arley_Vijayraj_Shingade.jpg",
+    linkedin: "https://www.linkedin.com/in/arley-vijayraj-shingade-5a5a33435"
+  }
 ];

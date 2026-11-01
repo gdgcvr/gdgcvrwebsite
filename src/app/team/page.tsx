@@ -12,6 +12,9 @@ import {
   Users,
   Camera,
   User,
+  Bot,
+  ShieldCheck,
+  Share2
 } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -37,11 +40,14 @@ const Team = () => {
     if (r.includes("cp") || r.includes("competitive"))
       return "Competitive Programming";
     if (r.includes("web")) return "Web Development";
-    if (r.includes("aiml") || r.includes("data")) return "AI/ML & Data Science";
+    if (r.includes("ai") && r.includes("machine")) return "AI & Machine Learning";
+    if (r.includes("ai") && r.includes("agentic")) return "Agentic AI";
+    if (r.includes("cyber")) return "Cyber Security";
     if (r.includes("android") || r.includes("app"))
       return "Android Development";
     if (r.includes("iot") || r.includes("embedded"))
       return "IoT & Embedded Systems";
+    if (r.includes("social")) return "Social Media";
     if (r.includes("logistics")) return "Logistics & Management";
     if (r.includes("design")) return "Graphic Design";
     if (r.includes("photo")) return "Photography";
@@ -64,15 +70,25 @@ const Team = () => {
       color: "text-google-blue",
       description: "Crafting the digital experiences.",
     },
-    "AI/ML & Data Science": {
+    "AI & Machine Learning": {
       icon: Brain,
       color: "text-google-red",
       description: "Innovating with intelligence.",
+    },
+    "Agentic AI": {
+      icon: Bot,
+      color: "text-google-yellow",
+      description: "Building AI that acts on its own.",
     },
     "Android Development": {
       icon: Smartphone,
       color: "text-google-green",
       description: "Building for the mobile world.",
+    },
+    "Cyber Security": {
+      icon: ShieldCheck,
+      color: "text-google-red",
+      description: "Defending the digital frontier.",
     },
     "IoT & Embedded Systems": {
       icon: Cpu,
@@ -83,6 +99,11 @@ const Team = () => {
       icon: Users,
       color: "text-google-green",
       description: "Making things happen.",
+    },
+    "Social Media": {
+      icon: Share2,
+      color: "text-google-yellow",
+      description: "Amplifying our voice online."
     },
     "Graphic Design": {
       icon: Palette,
@@ -246,7 +267,7 @@ const Team = () => {
                         {/* Meta Data Line */}
                         <div className="flex items-center gap-3 mb-3">
                           <span className="font-mono text-xs font-bold uppercase tracking-widest text-neutral-400">
-                            NODE_0{sectionIndex + 1}
+                            NODE_{(sectionIndex + 1).toString().padStart(2, "0")}
                           </span>
                           <span className="h-px w-6 bg-neutral-200"></span>
                           <div
@@ -303,7 +324,7 @@ const Team = () => {
                                     alt={`Profile photo of ${member.name} - ${member.role}`}
                                     fill
                                     sizes="(max-width: 768px) 50vw, 25vw"
-                                    className={`object-cover ${(member as any).objectPosition || "object-top"} transition-all duration-500 group-hover:scale-105`}
+                                    className={`object-cover object-top transition-all duration-500 group-hover:scale-105`}
                                   />
 
                                   {/* Overlay */}
